@@ -21,6 +21,7 @@ const Navbar = () => {
         onClick = {handleCloseMenu}
         >&#xf405;</span>
         <NavLink
+          exact
           activeClassName={styles.chosen}
           className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/">בית
@@ -47,7 +48,7 @@ const Navbar = () => {
           activeClassName={styles.chosen}
           className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/MainFindings"
-        >ממצאים
+        >ממצאים עיקריים
         </NavLink>
         <NavLink
           activeClassName={styles.chosen}

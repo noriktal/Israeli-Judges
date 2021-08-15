@@ -7,6 +7,7 @@ import Database from "./Components/Database";
 import MainFindings from "./Components/MainFindings";
 import QueryPage from "./Components/QueryPage";
 import English from "./Components/English";
+import NotFound from "./Components/NotFound";
 
 
 function App() {
@@ -15,9 +16,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          
           <Route exact path="/About">
             <About />
           </Route>
@@ -32,6 +31,12 @@ function App() {
           </Route>
           <Route exact path="/English">
             <English />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
