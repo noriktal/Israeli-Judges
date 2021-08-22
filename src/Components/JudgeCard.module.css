@@ -1,0 +1,94 @@
+.card{
+    width: fit-content;
+    z-index:2;
+    position:absolute;
+    background-color: var(--red);
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-shadow: 2px 2px 3px black;
+    top: 20%;
+    right: 10%;
+
+   
+}
+
+@Media only screen and (max-width:550px){
+    .card{
+        transform: scale(0.9);
+        max-width: 300px;
+    }
+}
+
+
+
+.upperCard{
+    background-color: var(--red);
+}
+
+.closeBtn{
+    font-family:  ionicons;
+    display:inline-block;
+    color:var(--white);
+    font-size: 26px;
+    width:100%;
+    text-align: right;
+    margin-right:8px; 
+    padding-top: 5px;
+    /* align-self: flex-end; */
+}
+
+.closeBtn:hover{
+    cursor: pointer;
+}
+
+.closed{
+    display: none;
+}
+
+.img{
+    clip-path: circle(50%);
+    width: 80px;
+    padding: 8px;
+    background-color: #EEEEEE;
+}
+
+
+
+.mainCard{
+    background-color:#EEEEEE;
+    font-size: 12px;
+    line-height: 0.8;
+    text-align: right;
+    
+}
+
+.h1{
+    color: var(--white);
+    padding-right: 5px;
+    padding-left: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.h2{
+    margin:0;
+    line-height: 1.1;
+}
+
+.h2:first-of-type{
+    padding-top: 10px;
+}
+
+.keyLabel{
+color: var(--red);
+padding-right: 10px;
+font-size: 16px;
+}
+
+.propertyLabel{
+    color: var(--grey);
+    padding-right: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+}

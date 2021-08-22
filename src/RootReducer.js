@@ -1,7 +1,10 @@
-//import { createSelector } from "reselect";
-//import { combineReducers } from "redux";
+import { createSelector } from "reselect";
+import { combineReducers } from "redux";
 
 //Initial States
+ 
+const initStateChosenJudge = {};
+
 
 const initStateFetch = {
     loading: false,
@@ -11,7 +14,17 @@ const initStateFetch = {
 
 //Reducers
 
-export default function rootReducer(state = initStateFetch, action){
+export function singleJudgeReducer(state = initStateChosenJudge, action){
+    switch(action.type){
+
+        case "CHANGE_JUDGE":
+            return action.judge;
+        default:
+            return state;
+    }
+}
+
+export function listReducer(state = initStateFetch, action){
     switch(action.type){
         case "FETCH_JUDGES_REQUEST":
             return {
@@ -36,9 +49,49 @@ export default function rootReducer(state = initStateFetch, action){
     }
 }
 
+
+//Combined Reducer
+
+export const rootReducer = combineReducers({
+    singleJudge: singleJudgeReducer,
+    judgesContainer: listReducer,
+    })
+
 //Selectors
 
+export const selectJudges = state => state.judgesContainer.judges;
+export const selectJudge = state => state.singleJudge;
+
+
 //Action Creators
+
+// export const fetchJudgesRequest = () => {
+//     return{
+//         type:"FETCH_JUDGES_REQUEST"
+//     }
+// }
+
+export const loadJudges = (judges) => {
+    return{
+        type:"LOAD_JUDGES",
+        judges: judges
+    }
+}
+
+// export const fetchJudgesFailed = (message) => {
+//     return{
+//         type:"FETCH_JUDGES_FAILED",
+//         error: message
+//     }
+// }
+
+export const changeJudge = (judge) => {
+   return{
+    type: "CHANGE_JUDGE",
+    judge: judge
+   }
+}
+
 
 // Action Creators- thunk functions
 
@@ -52,12 +105,11 @@ export default function rootReducer(state = initStateFetch, action){
 //         try{ 
 //              const response = await fetch(url); 
  
-//              const judges = await response.json();
-//              console.log("judges container:", judges.length);
-//              dispatch(loadJudges());
+//              const judgesContainer = await response.json();
+//              dispatch(loadJudges(judgesContainer.judges));
      
 //          }catch(err){
-//              console.log(err.message);
+//              console.log(err.message, "error from here");
 //              dispatch(fetchJudgesFailed(err.message))
 //          };
  

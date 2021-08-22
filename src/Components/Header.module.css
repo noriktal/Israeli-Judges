@@ -86,7 +86,7 @@ header{
 .button{
     width: fit-content;
     background-color: rgba(105, 105, 105, 0.9);
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 5px;
     border:none;
     display:inline;
@@ -102,10 +102,14 @@ header{
     width: 90%;
     flex-direction:row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+
 }
 
+
+
 .search{
-    font-size: calc(0.6rem + 1vw);
+    font-size: calc(1rem + 1vw);
     margin: 0 auto;
     border:none;
     color: white;
@@ -114,25 +118,26 @@ header{
     display:inline;
 }
 
-.headerSearchbox{
-    display:inline;
+
+.search:hover{
+    cursor: pointer;
 }
 
-#headerSearch{
+.headerSearchbox{
+    display:flex;
+} 
+
+/* #headerSearch{
     font-size: calc(0.6rem + 1vw);
-    border-radius: 10px;
     color:  var(--red);
     font-family: Rubik, Arial;
     display:inline;
     border:4px solid white;
     border-radius:10px;
-    display:inline;
-}
+    width: 100%; */
+    
+/* } */
 
-.search::placeholder{
-    color:rgba(236, 56, 46, 0.6);
-    font-family: Rubik, Arial;
-}
 
 @media only screen and (max-width:920px){
 
@@ -161,5 +166,7 @@ header{
       }
 }
 
+
+/* styles for MUI component are in the index.css file */
 
 

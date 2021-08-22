@@ -6,6 +6,7 @@
 :root {
    --red: #EC382E;
    --white: #FDFBFD;
+   --grey: #7F7473;
 }
 
 html {
@@ -22,4 +23,60 @@ body {
 }
 
 
+/* header autocomplet MUI */
 
+.MuiAutocomplete-root{
+   width: 38ch; 
+   background-color: var(--white);
+   border-radius: 5px;
+   
+}
+
+.MuiAutocomplete-root:focus{
+   outline: 1px solid var(--red);
+}
+
+
+.MuiAutocomplete-listbox{
+   font-size: 15px;
+   font-family: Rubik, arial;
+}
+ .Mui-focused{
+border: none;
+
+} 
+
+.MuiInputLabel-root{
+   font-size: 18px;
+}
+
+/* .MuiInputLabel-root .Mui-focused{
+   color: var(--grey);
+} */
+
+
+.MuiFormLabel-root{
+   font-size: 18px !important;
+   font-family: Rubik, arial;;
+}
+
+.MuiAutocomplete-input{
+   font-size: 17px !important;
+}
+
+@Media only screen and (max-width:550px){
+   .MuiAutocomplete-root{
+      font-size: 15px;
+      max-width: 60vw;
+      margin-bottom: 12px;
+   }
+
+   .MuiInputBase-root{
+      padding: 0;
+   }
+
+   .MuiFormLabel-root{
+      font-size: 15px !important;
+      
+   }
+}
