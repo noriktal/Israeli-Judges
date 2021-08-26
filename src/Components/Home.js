@@ -7,7 +7,7 @@ import {  useDispatch } from "react-redux";
 const Home = () => {
 
     return (
-        <div >
+        <div>
           <Header />
           <ProjectDescription />
         </div>

@@ -108,7 +108,7 @@ header{
 
 
 
-.search{
+/* .search{
     font-size: calc(1rem + 1vw);
     margin: 0 auto;
     border:none;
@@ -116,16 +116,16 @@ header{
     font-family: Ionicons;
     background-color: rgba(0,0,0,0);
     display:inline;
-}
+} */
 
 
-.search:hover{
+/* .search:hover{
     cursor: pointer;
-}
+} */
 
-.headerSearchbox{
+/* .headerSearchbox{
     display:flex;
-} 
+}  */
 
 /* #headerSearch{
     font-size: calc(0.6rem + 1vw);
@@ -164,6 +164,14 @@ header{
       display:block;
       padding:8px;
       }
+}
+
+
+@media only screen and (max-width:850px){
+
+    header{
+        background-image: url("../Images/Supreme-Court-small.jpg");
+    }
 }
 
 

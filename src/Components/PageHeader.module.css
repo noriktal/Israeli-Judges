@@ -1,0 +1,30 @@
+.headerWrapper{
+    background-image: url("../Images/Supreme\ Court\ detail.jpg");
+    filter: brightness(110%);
+    
+}
+
+.innerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    width: 100vw;
+    color: white;
+    background-color:rgba(40,40,40,0.5);
+}
+
+.pageTitle{
+    font-Size: 50px;
+    font-weight:bolder;
+}
+
+.secondaryTitle{
+    font-size: 30px;
+    background-position-y: 0%;
+}

@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import {  useDispatch } from "react-redux";
 import { loadJudges } from "./RootReducer";
 import data from "./Data/judgesData.json";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { heIL } from '@material-ui/core/locale';
+// import { arSD } from '@material-ui/data-grid';
 
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
@@ -15,16 +17,21 @@ import English from "./Components/English";
 import NotFound from "./Components/NotFound";
 
 
-const theme = createMuiTheme({
-palette:{
-  primary: {
-    main: "#EC382E"
+const theme = createTheme({
+  palette:{
+    primary: {
+      main: "#EC382E"
+    },
+    secondary: {
+      main: "#7F7473"
+    }
   },
-  secondary: {
-    main: "#7F7473"
-  }
-},
-})
+  typography: {
+    fontFamily: '"Rubik", "Arial"'
+  },
+  direction: "rtl"
+
+}, heIL)
 
 
 function App() {

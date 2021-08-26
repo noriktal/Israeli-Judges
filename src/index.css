@@ -50,11 +50,6 @@ border: none;
    font-size: 18px;
 }
 
-/* .MuiInputLabel-root .Mui-focused{
-   color: var(--grey);
-} */
-
-
 .MuiFormLabel-root{
    font-size: 18px !important;
    font-family: Rubik, arial;;
@@ -80,3 +75,79 @@ border: none;
       
    }
 }
+
+/* Data Grid MUI component */
+
+.MuiDataGrid-root{
+font-family: Rubik, arial;
+margin-left: 10px;
+ }
+
+ .MuiDataGrid-columnsContainer{
+    height: 60px !important;
+    
+ }
+
+.MuiDataGrid-columnHeaderTitleContainer{
+   flex-direction: row !important;
+}
+
+
+.MuiDataGrid-columnHeader{
+justify-content: center;
+
+}
+
+.MuiDataGrid-columnHeaderTitle{
+overflow: visible !important;
+width: fit-content;
+color: var(--red);
+font-size: 15px;
+white-space: normal !important;
+line-height: 1 !important;
+text-align: center !important;
+
+}
+
+
+.Mui-even{
+   background-color: #D9D9D9;
+}
+
+.Mui-even:hover{
+   background-color: #D9D9D9 !important;
+}
+
+.MuiDataGrid-cell{
+   /* text-align: center !important; */
+   font-size: 14px;
+   white-space: normal !important;
+   line-height: 1 !important;
+   display: flex !important;
+   align-items: center;
+   height: fit-content;
+   max-height: 60px;
+  justify-content: center;
+  
+}
+
+.MuiDataGrid-toolbarContainer{
+   background-color: var(--red);
+   margin-bottom: 15px;
+   
+}
+
+ .MuiButton-text{
+    font-size: 16px !important;
+    color: var(--white) !important;
+    
+ }
+
+ .MuiTablePagination-toolbar{
+    
+    color: var(--red);
+ }
+
+ .MuiTablePagination-caption{
+   font-size: 15px !important;
+ }
