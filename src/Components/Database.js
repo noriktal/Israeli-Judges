@@ -1,5 +1,6 @@
 import PageHeader from "./PageHeader";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
+import TabSystem from "./TabSystem";
 import { selectJudges } from "../RootReducer";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -52,9 +53,9 @@ const Database = () => {
 
 
   return (
-    <div>
+    <div style={{overflowX:"hidden", width: "100vw"}}>
       <PageHeader />
-      <div style={{ height: 600, width: "100%" }}>
+      <div style={{ height: 600, width: "100vw" }}>
       {/* {filterModel.items.length ? <span>{filterModel.items.length}</span> : <span></span>} */}
 
         <DataGrid
@@ -91,6 +92,9 @@ const Database = () => {
               toolbarExportLabel: 'ייצוא',
               toolbarExportCSV: 'הורדה כ- CSV',
           }}
+        />
+        <TabSystem  
+          // style={{flexDirection: "column"}}
         />
       </div>
     </div>

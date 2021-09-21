@@ -37,7 +37,6 @@ const theme = createTheme({
 function App() {
 
   const dispatch = useDispatch();
-  //const judges = useSelector(selectJudges);
 
   useEffect(() => {
     dispatch(loadJudges(data.judges));

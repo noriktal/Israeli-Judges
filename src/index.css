@@ -151,3 +151,18 @@ text-align: center !important;
  .MuiTablePagination-caption{
    font-size: 15px !important;
  }
+
+/* Tabs Mui Component */
+ 
+.MuiTabs-vertical{
+   margin-right: 8px;
+   margin-top: 12px;
+    /* backgroundColor: theme.palette.background.paper, */
+   display: 'flex';
+   height: fit-content;
+ }
+
+ .MuiTab-wrapper{
+   font-size: 17px;
+   align-items: flex-start !important;
+ }

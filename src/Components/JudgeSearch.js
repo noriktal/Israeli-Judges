@@ -13,13 +13,13 @@ const JudgeSearch = () => {
     const dispatch = useDispatch();
 
     const [selectedJudge, setSelectedJudge] = useState({surnameHE: "",givenNameHE:"" });
-    const [cardState, setCardState] = useState("");
+    const [cardState, setCardState] = useState("close");
 
     function handleJudgeSubmit(e) {
         e.preventDefault();
+        setCardState("");
         dispatch(changeJudge(selectedJudge));
         setSelectedJudge({surnameHE: "", givenNameHE: ""});
-        setCardState("");
 
     }
 

@@ -28,18 +28,18 @@ const JudgeCard = ({ setCardState, cardState }) => {
                 
             </div>
             <div className={styles.mainCard}>
-                
+                <h2 className={styles.h2}><span className={styles.keyLabel}>פעיל כיום:</span> <span className={styles.propertyLabel}>{chosenJudge.status2017HE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>מגדר:</span> <span className={styles.propertyLabel}>{chosenJudge.genderHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>לאום:</span> <span className={styles.propertyLabel}>{chosenJudge.nationalityHE}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>דת\דתיות:</span> <span className={styles.propertyLabel}>{chosenJudge.religionHE}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>זהות אתנית:</span> <span className={styles.propertyLabel}>{chosenJudge.ethnicityHE}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>ארץ לידה:</span> <span className={styles.propertyLabel}>{chosenJudge.birthCountryHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>דת:</span> <span className={styles.propertyLabel}>{chosenJudge.religionHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>דתיות:</span> <span className={styles.propertyLabel}>{chosenJudge.religiousityHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>אתניות-עדה:</span> <span className={styles.propertyLabel}>{chosenJudge.ethnicityHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>ארץ-איזור לידה:</span> <span className={styles.propertyLabel}>{chosenJudge.birthCountryHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>שנת לידה:</span> <span className={styles.propertyLabel}>{chosenJudge.birthYear}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>עיר ילדות עיקרית:</span> <span className={styles.propertyLabel}>{chosenJudge.majorChildhoodCityHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>עיר ילדות:</span> <span className={styles.propertyLabel}>{chosenJudge.majorChildhoodCityHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>עשירון עיר ילדות:</span> <span className={styles.propertyLabel}>{chosenJudge.citySocio}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>בי"ס תיכון:</span> <span className={styles.propertyLabel}>{chosenJudge.highschoolHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>זרם חינוכי:</span> <span className={styles.propertyLabel}>{chosenJudge.educationTypeHE}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>שירות צבאי:</span> <span className={styles.propertyLabel}>{chosenJudge.armyServiceHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>השכלה משפטית עיקרית:</span> <span className={styles.propertyLabel}>{chosenJudge.mainLegalEducationHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>שנת סיום תואר ראשון:</span> <span className={styles.propertyLabel}>{chosenJudge.YearFisrtDegreeGraduation}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>סוג השכלה משפטית מתקדמת:</span> <span className={styles.propertyLabel}>{chosenJudge.typeAdvancedLegalEducationHE}</span></h2>
@@ -48,17 +48,17 @@ const JudgeCard = ({ setCardState, cardState }) => {
                 <h2 className={styles.h2}><span className={styles.keyLabel}>השכלה מתקדמת נוספת:</span> <span className={styles.propertyLabel}>{chosenJudge.otherAdvancedEducationHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>מקום התמחות:</span> <span className={styles.propertyLabel}>{chosenJudge.placeOfInternshipHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>שנת התחלה כעו"ד:</span> <span className={styles.propertyLabel}>{chosenJudge.yearOfBecomingLawyer}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>גיל כניסה לשיפוט:</span> <span className={styles.propertyLabel}>{chosenJudge.ageOfEntering}</span></h2>
-                <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד אחרון:</span> <span className={styles.propertyLabel}>{chosenJudge.lastPositionHE}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>גיל כניסה לשיפוט:</span> <span className={styles.propertyLabel}>{chosenJudge.ageOfEnteringJudgeship}</span></h2>
+                <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד אחרון לפני שיפוט:</span> <span className={styles.propertyLabel}>{chosenJudge.lastPositionBeforeJudgeshipHE}</span></h2>
                 <h2 className={styles.h2}><span className={styles.keyLabel}>ניסיון במינוי ראשון:</span> <span className={styles.propertyLabel}>{chosenJudge.xpInFirstNom}</span></h2>
 
-                {chosenJudge.endOfCareer && <h2 className={styles.h2}><span className={styles.keyLabel}>סיום קריירה:</span> <span className={styles.propertyLabel}>{chosenJudge.endOfCareerHE}</span></h2>
+                {chosenJudge.endOfCareerHE && <h2 className={styles.h2}><span className={styles.keyLabel}>סיום קריירה:</span> <span className={styles.propertyLabel}>{chosenJudge.endOfCareerHE}</span></h2>
                 }
-                {chosenJudge.endOfCareerYear && <h2 className={styles.h2}><span className={styles.keyLabel}>שנת סוף הקריירה:</span> <span className={styles.propertyLabel}>{chosenJudge.endOfCareerYear}</span></h2>
+                {chosenJudge.endOfCareerYear != 9999 && <h2 className={styles.h2}><span className={styles.keyLabel}>שנת סוף הקריירה:</span> <span className={styles.propertyLabel}>{chosenJudge.endOfCareerYear === 9999 ? "-" : chosenJudge.endOfCareerYear }</span></h2>
                 }
                 {chosenJudge.ageOfRetirenment && <h2 className={styles.h2}><span className={styles.keyLabel}>גיל בפרישה:</span> <span className={styles.propertyLabel}>{chosenJudge.ageOfRetirenment}</span></h2>
                 }
-                {chosenJudge.xpInRet && <h2 className={styles.h2}><span className={styles.keyLabel}>ניסיון בפרישה:</span> <span className={styles.propertyLabel}>{chosenJudge.xpInRet}</span></h2>
+                {chosenJudge.JudgeshipxpInRet && <h2 className={styles.h2}><span className={styles.keyLabel}>ניסיון בפרישה:</span> <span className={styles.propertyLabel}>{chosenJudge.JudgeshipxpInRet}</span></h2>
                 }
                 <div>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד ראשון:</span> <span className={styles.propertyLabel}>{chosenJudge.position1HE}</span></h2>

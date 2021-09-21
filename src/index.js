@@ -23,6 +23,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-const tellTale = () => console.log("the state is now:", store.getState());
 
 
