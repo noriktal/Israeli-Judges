@@ -1,0 +1,27 @@
+
+@media only screen and (max-width:530px){ 
+    
+
+    .hammerContainer{
+        transform: scale(0.85);
+        margin-top: -250px;
+        margin-bottom: -270px;
+    }
+    
+}
+
+@media only screen and (max-width:460px){ 
+    
+    .hammerContainer{
+        transform: scale(0.75);
+    }
+    
+}
+
+@media only screen and (max-width:400px){ 
+    
+    .hammerContainer{
+        transform: scale(0.67);
+    }
+    
+}

@@ -1,0 +1,11 @@
+
+.supremeContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* .canvasWrapper{
+    display:flex;
+} */

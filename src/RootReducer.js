@@ -3,60 +3,99 @@ import { combineReducers } from "redux";
 
 //Initial States
  
-const initStateChosenJudge = {};
 
 const initStateCourts = [{nameEN: "Magistrate", nameHE: "שלום"},
                          {nameEN: "District", nameHE: "מחוזי"},
                          {nameEN: "Supreme", nameHE: "עליון"},
                          {nameEN: "Labor Regional", nameHE: "עבודה אזורי"},
                          {nameEN: "Labor National", nameHE: "עבודה ארצי"},
-                        ]
+                        ];
+
+const initStateChosenCourt = "";
+
+const initStateUniCollege = [];
+
+const initStateEthnicities = [ 
+                              {nameEN: "Ashkenazi", nameHE: "אשכנזי"},
+                              {nameEN: "Mizrahi", nameHE: "מזרחי"},
+                              {nameEN: "Ethiopian", nameHE: "אתיופי"},
+                              {nameEN: "Ex USSR", nameHE: "בריה''מ לשעבר"},
+                              {nameEN: "None-Jewish", nameHE: "לא יהודי"},
+                              {nameEN: "Unknown", nameHE: "לא ידוע"}
+                            ];
 
 // const initStateChosenCourtType = {};
 
 const initChosenYears = {
                     preChosenYears: [1955, 1965, 1975, 1985, 1995, 2005, 2015],
-                    userChosenYears: []
+                    userChosenYear: null
                     }
 
-const initStateFetch = {
+const initStateJudges = [];
+
+const initStateMap = {
     loading: false,
-    judges: [],
+    mapData: {},
     error: ""
-}
+};
 
 //Reducers
 
-export function singleJudgeReducer(state = initStateChosenJudge, action){
-    switch(action.type){
+// export function singleJudgeReducer(state = initStateChosenJudge, action){
+//     switch(action.type){
 
-        case "CHANGE_JUDGE":
-            return action.judge;
+//         case "CHANGE_JUDGE":
+//             return action.judge;
+//         default:
+//             return state;
+//     }
+// }
+
+export function listReducer(state = initStateJudges, action){
+    switch(action.type){
+        
+        case "LOAD_JUDGES":
+            
+            return [...action.judges]
+                
+            
+        
         default:
             return state;
     }
 }
 
-export function listReducer(state = initStateFetch, action){
+export function mapReducer(state = initStateMap, action){
     switch(action.type){
-        case "FETCH_JUDGES_REQUEST":
+        case "FETCH_MAP_REQUEST":
             return {
                 ...state,
                 loading: true
             }
-        case "LOAD_JUDGES":
+        case "LOAD_MAP":
             
             return {
                 loading: false,
-                judges: action.judges,
+                mapData: action.mapData,
                 error: ""
             }
-        case "FETCH_JUDGES_FAILED":
+        case "FETCH_MAP_FAILED":
             return {
                 loading: false,
-                judges: [],
+                mapData: {},
                 error: action.error
             }
+        default:
+            return state;
+    }
+}
+
+export function uniCollegeReducer(state = initStateUniCollege, action){
+    switch(action.type){
+
+        case "LOAD_UNICOLLEGES":
+            return [...action.uniColleges];
+            
         default:
             return state;
     }
@@ -65,24 +104,43 @@ export function listReducer(state = initStateFetch, action){
 export function yearsReducer(state = initChosenYears, action){
     switch(action.type){
 
-        case "USER_CHANGES_YEARS":
-
-        return {
-            ...state,
-            userChosenYears: action.years
-        }
+        case "CHANGE_YEAR":
+            return {
+                ...state,
+                userChosenYear: action.year
+            }
         
         default:
             return state;
     }
 }
 
+
 export function courtsReducer(state = initStateCourts, action){
 
     switch(action.type){
+        default:
+            return state;
+    }
 
-        case "COURTS_CHANGE":
-            return action.courts;
+}
+
+export function ethnicitiesReducer(state = initStateEthnicities, action){
+
+    switch(action.type){
+        default:
+            return state;
+    }
+
+}
+
+
+export function chosenCourtReducer(state = initStateChosenCourt, action){
+
+    switch(action.type){
+
+        case "CHANGE_COURT":
+            return action.court;
         
         default:
             return state;
@@ -94,67 +152,197 @@ export function courtsReducer(state = initStateCourts, action){
 //Combined Reducer
 
 export const rootReducer = combineReducers({
-    singleJudge: singleJudgeReducer,
-    judgesContainer: listReducer,
-    chosenYears: yearsReducer,
-    courts: courtsReducer
+    //singleJudge: singleJudgeReducer,
+    judges: listReducer,
+    years: yearsReducer,
+    courts: courtsReducer,
+    chosenCourt: chosenCourtReducer,
+    ethnicities: ethnicitiesReducer,
+    mapContainer: mapReducer,
+    uniColleges: uniCollegeReducer
     })
 
 //Selectors
 
-export const selectJudges = state => state.judgesContainer.judges;
-export const selectJudge = state => state.singleJudge;
-export const selectPreChosenYears = state => state.chosenYears.preChosenYears;
-export const selectUserChosenYears = state => state.chosenYears.userChosenYears;
+export const selectJudges = state => state.judges;
+//export const selectJudge = state => state.singleJudge;
+export const selectPreChosenYears = state => state.years.preChosenYears;
+export const selectUserChosenYear = state => state.years.userChosenYear;
 export const selectCourts = state => state.courts;
 export const selectCourtsEN = state => state.courts.map(court => court.nameEN);
 export const selectCourtsHE = state => state.courts.map(court => court.nameHE);
+export const selectEthnicities = state => state.ethnicities;
+export const selectEthnicitiesEN = state => state.ethnicities.map(ethnicity => ethnicity.nameEN);
+export const selectEthnicitiesHE = state => state.ethnicities.map(ethnicity => ethnicity.nameHE);
 
+export const selectMapLoadState = state => state.mapContainer.loading;
+export const selectMapData = state => state.mapContainer.mapData;
+export const selectMapError = state => state.mapContainer.error;
+export const selectUniColleges = state => state.uniColleges;
+
+
+export const selectActiveJudgesCountPreChosenYears = createSelector(
+    [selectJudges,selectPreChosenYears],
+    (judges, preChosenYears) => {
+       let activeJudgesCounts = [];
+       preChosenYears.forEach(year => {
+           const yearObject = {year: year, count: 0};
+           yearObject.count = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year)).length;
+           activeJudgesCounts.push(yearObject);
+       })
+
+       return activeJudgesCounts;
+    }
+)
+
+// data structure -> [{year: 1955, total: x, places: [{nameEN: "uni1", nameHE: "אוני1", abbreviationEN: "", abbreviationHE: "", count: y, percent: z, longitude: i, latitude: j}, {}...] }]
+export const selectMainLegalEducationPlacePreChosenYears = createSelector(
+    [selectUniColleges,selectPreChosenYears, selectJudges],
+    (uniColleges, preChosenYears, judges) => {
+
+       let activeJudgesCountsPerPlacePerYear = [];
+       preChosenYears.forEach(year => {
+           const yearObject = {year: year, total: 0, judges:[], places: []};
+           const activeJudgesIsraelSchooling = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year) && (judge.mainLegalEducationTypeInstEN !== "Abroad") && (judge.mainLegalEducationTypeInstEN !== "Unknown") );
+           yearObject.judges = activeJudgesIsraelSchooling;
+           yearObject.total = activeJudgesIsraelSchooling.length;
+           uniColleges.forEach(place => {
+            const placeCount = activeJudgesIsraelSchooling.filter(judge => judge.mainLegalEducationEN === place.nameEN).length;
+            const placePercent = parseFloat(((placeCount / yearObject.total) * 100).toFixed(1))
+            const placeObject ={nameEN: place.nameEN, nameHE:place.nameHE, abbreviationHE:place.abbreviationHE,abbreviationEN:place.abbreviationEN, count: placeCount, percent:placePercent, longitude:place.longitude, latitude: place.latitude}
+            yearObject.places.push(placeObject);
+           })
+           
+           activeJudgesCountsPerPlacePerYear.push(yearObject);
+       })
+
+       return activeJudgesCountsPerPlacePerYear;
+    }
+)
+
+// data structure -> [{year: 1955, globalTotal: c, relevantTotal: x (= no. of active judges with that info known), countUnknowns: a, percentUnknowns:b, countUni: 0, countCollege:0, percentUni: 0, percentCollege: 0}, {}...]
+export const selectMainLegalEducationTypePreChosenYears = createSelector(
+    [selectPreChosenYears, selectJudges],
+    (preChosenYears, judges) => {
+        
+        const allYearsCounts = [];
+        
+        preChosenYears.forEach(year => {
+           
+            let yearObject = {};
+            
+            //only active judges at that year
+            const activeJudges = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year));
+            yearObject.globalTotal = activeJudges.length;
+            yearObject.year = year;
+
+            //count Unis and Colleges
+
+            const filteredJudgesUni = activeJudges.filter(judge =>  judge.mainLegalEducationTypeInstEN === "University");
+            const filteredJudgesCollege = activeJudges.filter(judge =>  judge.mainLegalEducationTypeInstEN === "College");
+
+            
+            yearObject.judgesUni = filteredJudgesUni;
+            yearObject.countUni = filteredJudgesUni.length;
+            yearObject.judgesCollege = filteredJudgesCollege;
+            yearObject.countCollege = filteredJudgesCollege.length;
+            yearObject.relevantTotal = yearObject.countUni +  yearObject.countCollege;
+            yearObject.countUnknowns = yearObject.globalTotal - yearObject.relevantTotal;
+            yearObject.percentUnknowns = parseFloat(((yearObject.countUnknowns / yearObject.globalTotal)*100).toFixed(1));
+            
+            //percents Unis and Colleges
+            
+            yearObject.percentUni =  parseFloat(((yearObject.countUni / yearObject.relevantTotal) * 100).toFixed(1));
+            yearObject.percentCollege = parseFloat((100 - yearObject.percentUni).toFixed(1));
+
+            allYearsCounts.push(yearObject);
+        
+        })
+
+        return allYearsCounts;
+
+})
+
+//structure: [{year: year, totalGlobal:x, totalRelevant:x, countAbroad:x, countIsrael:x, percentAbroad:x, percentIsrael:x, countUnknowns, percentUnknowns}]
+export const selectMainLegalEducationSourcePreChosenYears = createSelector(
+    [selectPreChosenYears, selectJudges],
+    (preChosenYears, judges) => {
+        const allYearsCounts = [];
+
+        preChosenYears.forEach(year => {
+           
+            let yearObject = {};
+            
+            //only active judges at that year
+            const activeJudges = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year));
+            yearObject.globalTotal = activeJudges.length;
+            yearObject.year = year;
+
+            yearObject.judgesAbroad = activeJudges.filter(judge =>  (judge.mainLegalEducationEN === "North America") || (judge.mainLegalEducationEN === "Britain and its Colonies") || (judge.mainLegalEducationEN === "Eastern Europe") || (judge.mainLegalEducationEN === "Europe - other") || (judge.mainLegalEducationEN === "Germany" || (judge.mainLegalEducationEN === "Abroad (other)" || (judge.mainLegalEducationEN === "Middle East (Asia)"))));
+            yearObject.countAbroad = yearObject.judgesAbroad.length;
+            yearObject.relevantTotal = activeJudges.filter(judge => judge.mainLegalEducationEN !== "Unknown").length;
+            yearObject.judgesIsrael = activeJudges.filter(judge => (! yearObject.judgesAbroad.includes(judge) && (judge.mainLegalEducationEN !== "Unknown")));
+            yearObject.countIsrael = yearObject.relevantTotal - yearObject.countAbroad;
+
+            yearObject.countUnknowns = yearObject.globalTotal - yearObject.relevantTotal;
+
+             //percents Abroad, Israel, Unknowns
+             yearObject.percentAbroad = parseFloat(((yearObject.countAbroad / yearObject.relevantTotal) * 100).toFixed(1));
+             yearObject.percentIsrael = parseFloat(((yearObject.countIsrael / yearObject.relevantTotal) * 100).toFixed(1));
+             yearObject.percentUnknowns = parseFloat(((yearObject.countUnknowns / yearObject.relevantTotal) * 100).toFixed(1));
+        
+             allYearsCounts.push(yearObject);
+        })
+       
+        return allYearsCounts;
+    })
+            
 
 export const selectGenderDataPreChosenYears = createSelector(
     [selectJudges,selectPreChosenYears],
     (judges, preChosenYears) => {
-        let genderCounts = {
-            womenCount1955: 0,
-            menCount1955: 0,
-            womenCount1965: 0,
-            menCount1965: 0,
-            womenCount1975: 0,
-            menCount1975: 0,
-            womenCount1985: 0,
-            menCount1985: 0,
-            womenCount1995: 0,
-            menCount1995: 0,
-            womenCount2005: 0,
-            menCount2005: 0,
-            womenCount2015: 0,
-            menCount2015: 0
-        }
-
+        
+        const allYearsCounts = [];
+                
         preChosenYears.forEach(year => {
+
+            let yearObject = {year: "", womenCount: 0, menCount: 0, totalCount: 0, percentWomen: 0}
             //only active judges at that year
-            const filteredJudges = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year));
+            const activeJudges = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year));
+           
+            yearObject.totalCount = activeJudges.length;
+            yearObject.year = year;
+            
+
             //count women and men
-            filteredJudges.forEach(judge => {
+            activeJudges.forEach(judge => {
                 if(judge.genderEN === "Female"){
-                    genderCounts[`womenCount${year}`] ++;
-                }else if(judge.genderEN === "Male"){
-                    genderCounts[`menCount${year}`] ++;
-                }
+                    yearObject.womenCount ++;
+                }else{
+                    yearObject.menCount ++;
+                };
             });
+
+            //calculate percent of women
+            yearObject.percentWomen = parseFloat(((yearObject.womenCount / yearObject.totalCount) * 100).toFixed(1));
+
+            allYearsCounts.push(yearObject);
         });
-        return genderCounts;
+        return allYearsCounts;
     }
 )
 
 export const selectGenderDataPerCourtPreChosenYears = createSelector(
     [selectJudges,selectPreChosenYears, selectGenderDataPreChosenYears],
     (judges, preChosenYears, genderCounts) => {
-        let genderCountsPerCourt = [
-            {  
-                year: 1955,
-                totalWomen: genderCounts.womenCount1955,
-                total: genderCounts.womenCount1955 + genderCounts.menCount1955,
+        let genderCountsAllCourts = [];
+        
+        preChosenYears.forEach((year, index) => {
+
+            let yearObject = {  
+                year: year,
+                totalWomen: genderCounts[index].womenCount,
+                total: genderCounts[index].totalCount,
                 countsPerCourt: [
                 {nameEN: "Magistrate", nameHE: "שלום",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
                 {nameEN: "District", nameHE: "מחוזי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
@@ -162,82 +350,7 @@ export const selectGenderDataPerCourtPreChosenYears = createSelector(
                 {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0,totalJudges: 0, percentOfTotal: 0},
                 {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0,totalJudges: 0, percentOfTotal: 0}
                 ]
-            },
-            {  
-                year: 1965,
-                totalWomen: genderCounts.womenCount1965,
-                total: genderCounts.womenCount1965 + genderCounts.menCount1965,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", percentOfAllWomen: 0, count: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
-            },
-            { 
-                year: 1975,
-                totalWomen: genderCounts.womenCount1975,
-                total: genderCounts.womenCount1975 + genderCounts.menCount1975,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
-            },
-            {  
-                year: 1985,
-                totalWomen: genderCounts.womenCount1985,
-                total: genderCounts.womenCount1985 + genderCounts.menCount1985,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
-            },
-            {  
-                year: 1995,
-                totalWomen: genderCounts.womenCount1995,
-                total: genderCounts.womenCount1995 + genderCounts.menCount1995,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
-            },
-            {  
-                year: 2005,
-                totalWomen: genderCounts.womenCount2005,
-                total: genderCounts.womenCount2005 + genderCounts.menCount2005,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום",  count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
-            },
-            {  
-                year: 2015,
-                totalWomen: genderCounts.womenCount2015,
-                total: genderCounts.womenCount2015 + genderCounts.menCount2015,
-                countsPerCourt: [
-                {nameEN: "Magistrate", nameHE: "שלום",  count: 0,  percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "District", nameHE: "מחוזי", count: 0, totalJudges: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Supreme", nameHE: "עליון", count: 0, totalJudges: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor Regional", nameHE: "עבודה אזורי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0},
-                {nameEN: "Labor National",nameHE: "עבודה ארצי", count: 0, percentOfAllWomen: 0, totalJudges: 0, percentOfTotal: 0}
-                ]
             }
-        ]
-
-        preChosenYears.forEach((year, index) => {
             //only active judges at that year for each type of court
 
             const filteredJudgesMagistrate = judges.filter(judge =>  ((judge.everInMagistrateStartYear1 <= year) && (judge.everInMagistrateEndYear1 >= year)) || ((judge.everInMagistrateStartYear2 <= year) && (judge.everInMagistrateEndYear2 >= year)) );
@@ -248,51 +361,94 @@ export const selectGenderDataPerCourtPreChosenYears = createSelector(
             
             //total no. of judges in each type of cout for each year
 
-            genderCountsPerCourt[index].countsPerCourt[0].totalJudges = filteredJudgesMagistrate.length;
-            genderCountsPerCourt[index].countsPerCourt[1].totalJudges = filteredJudgesDistrict.length;
-            genderCountsPerCourt[index].countsPerCourt[2].totalJudges = filteredJudgesSupreme.length;
+            yearObject.countsPerCourt[0].totalJudges = filteredJudgesMagistrate.length;
+            yearObject.countsPerCourt[1].totalJudges = filteredJudgesDistrict.length;
+            yearObject.countsPerCourt[2].totalJudges = filteredJudgesSupreme.length;
             
             //labor courts est. in 1969
 
             if(year >= 1969){
-                genderCountsPerCourt[index].countsPerCourt[3].totalJudges = filteredJudgesLaborRegional.length;
-                genderCountsPerCourt[index].countsPerCourt[4].totalJudges = filteredJudgesLaborNational.length;
+                yearObject.countsPerCourt[3].totalJudges = filteredJudgesLaborRegional.length;
+                yearObject.countsPerCourt[4].totalJudges = filteredJudgesLaborNational.length;
             }
 
             // no. of women in each type of cout for each year
             
-            genderCountsPerCourt[index].countsPerCourt[0].count = filteredJudgesMagistrate.filter(judge => judge.genderEN === "Female").length;
-            genderCountsPerCourt[index].countsPerCourt[1].count = filteredJudgesDistrict.filter(judge => judge.genderEN === "Female").length;
-            genderCountsPerCourt[index].countsPerCourt[2].count = filteredJudgesSupreme.filter(judge => judge.genderEN === "Female").length;
+            yearObject.countsPerCourt[0].count = filteredJudgesMagistrate.filter(judge => judge.genderEN === "Female").length;
+            yearObject.countsPerCourt[1].count = filteredJudgesDistrict.filter(judge => judge.genderEN === "Female").length;
+            yearObject.countsPerCourt[2].count = filteredJudgesSupreme.filter(judge => judge.genderEN === "Female").length;
             
             if(year >= 1969){
-            genderCountsPerCourt[index].countsPerCourt[3].count = filteredJudgesLaborRegional.filter(judge => judge.genderEN === "Female").length;
-            genderCountsPerCourt[index].countsPerCourt[4].count = filteredJudgesLaborNational.filter(judge => judge.genderEN === "Female").length;
+                yearObject.countsPerCourt[3].count = filteredJudgesLaborRegional.filter(judge => judge.genderEN === "Female").length;
+                yearObject.countsPerCourt[4].count = filteredJudgesLaborNational.filter(judge => judge.genderEN === "Female").length;
             }
 
             //calculate percents for each year 
             if(year >= 1969){
                 for(let i = 0; i< 5; i++){
                     //percent of women in each court type from all women judges that year
-                    genderCountsPerCourt[index].countsPerCourt[i].percentOfAllWomen = ((genderCountsPerCourt[index].countsPerCourt[i].count/ genderCountsPerCourt[index].totalWomen)*100).toFixed(1);
+                    yearObject.countsPerCourt[i].percentOfAllWomen = ((yearObject.countsPerCourt[i].count/ yearObject.totalWomen)*100).toFixed(1);
                     //percent of women in each court type from total no. of judges in that court type that year
-                    genderCountsPerCourt[index].countsPerCourt[i].percentOfTotal = ((genderCountsPerCourt[index].countsPerCourt[i].count/ genderCountsPerCourt[index].countsPerCourt[i].totalJudges)*100).toFixed(1);
+                    yearObject.countsPerCourt[i].percentOfTotal = ((yearObject.countsPerCourt[i].count/ yearObject.countsPerCourt[i].totalJudges)*100).toFixed(1);
                 }
             }else{
                 for(let i = 0; i< 3; i++){
                     //percent of women in each court type from all women judges that year
-                    genderCountsPerCourt[index].countsPerCourt[i].percentOfAllWomen = ((genderCountsPerCourt[index].countsPerCourt[i].count/ genderCountsPerCourt[index].totalWomen)*100).toFixed(1);
+                    yearObject.countsPerCourt[i].percentOfAllWomen = ((yearObject.countsPerCourt[i].count/ yearObject.totalWomen)*100).toFixed(1);
                     //percent of women in each court type from total no. of judges in that court type that year
-                    genderCountsPerCourt[index].countsPerCourt[i].percentOfTotal = ((genderCountsPerCourt[index].countsPerCourt[i].count/ genderCountsPerCourt[index].countsPerCourt[i].totalJudges)*100).toFixed(1);
+                    yearObject.countsPerCourt[i].percentOfTotal = ((yearObject.countsPerCourt[i].count/ yearObject.countsPerCourt[i].totalJudges)*100).toFixed(1);
                 }
             }
 
+            genderCountsAllCourts.push(yearObject);
         }); 
         
-      return genderCountsPerCourt;
+      return genderCountsAllCourts;
     }
 )
 
+//data structure: [{year:year, totalGlobal, totalRelevant}, {}...]
+export const selectEthnicityPreChosenYears = createSelector(
+    [selectJudges,selectPreChosenYears],
+    (judges, preChosenYears) => {
+        
+        const allYearsCounts = [];
+                
+        preChosenYears.forEach(year => {
+
+            let yearObject = {};
+            //only active judges at that year
+            const activeJudges = judges.filter(judge => (judge.position1Year <= year) && (judge.endOfCareerYear >= year));
+            yearObject.globalTotal = activeJudges.length;
+            yearObject.year = year;
+           
+            //count ethnicities, unknowns
+            yearObject.judgesAshkenazi = activeJudges.filter(judge =>  judge.ethnicityEN === "Ashkenazi");
+            yearObject.countAshkenazi = yearObject.judgesAshkenazi.length;
+            yearObject.judgesMizrahi = activeJudges.filter(judge =>  judge.ethnicityEN === "Mizrahi");
+            yearObject.countMizrahi = yearObject.judgesMizrahi.length;
+            yearObject.judgesEthiopian= activeJudges.filter(judge =>  judge.ethnicityEN === "Ethiopian");
+            yearObject.countEthiopian = yearObject.judgesEthiopian.length;
+            yearObject.judgesExUSSR= activeJudges.filter(judge =>  judge.ethnicityEN === "Ex USSR");
+            yearObject.countExUSSR = yearObject.judgesExUSSR.length;
+            yearObject.judgesNoneJewish = activeJudges.filter(judge =>  judge.ethnicityEN === "None-Jewish");
+            yearObject.countNoneJewish = yearObject.judgesNoneJewish.length;
+            yearObject.relevantTotal = activeJudges.filter(judge => judge.ethnicityEN !== "Unknown").length;
+            yearObject.countUnknowns = yearObject.globalTotal - yearObject.relevantTotal;
+
+            //calculate percent ethnicities, unknowns
+            yearObject.percentAshkenazi = parseFloat(((yearObject.countAshkenazi / yearObject.globalTotal) * 100).toFixed(1));
+            yearObject.percentMizrahi = parseFloat(((yearObject.countMizrahi / yearObject.globalTotal) * 100).toFixed(1));
+            yearObject.percentEthiopian = parseFloat(((yearObject.countEthiopian / yearObject.globalTotal) * 100).toFixed(1));
+            yearObject.percentExUSSR = parseFloat(((yearObject.countExUSSR / yearObject.globalTotal) * 100).toFixed(1));
+            yearObject.percentNoneJewish = parseFloat(((yearObject.countNoneJewish / yearObject.globalTotal) * 100).toFixed(1));
+            yearObject.percentUnknowns = parseFloat(((yearObject.countUnknowns / yearObject.globalTotal) * 100).toFixed(1));
+
+            allYearsCounts.push(yearObject);
+        });
+        return allYearsCounts;
+    }
+)
 
 export const selectReligionActiveJudges = createSelector(
     selectJudges,
@@ -328,10 +484,13 @@ export const selectReligionActiveJudges = createSelector(
     }
 )
 
+export const selectSupremeJudgesPerChosenYear = createSelector(
+    [selectJudges,selectUserChosenYear],
+    (judges, chosenYear) => {
+     return judges.filter(judge => ((judge.everInSupremeStartYear1 <= chosenYear) && (judge.everInSupremeEndYear1 >= chosenYear)) || ((judge.everInSupremeStartYear2 <= chosenYear) && (judge.everInSupremeEndYear2 >= chosenYear)) );
+    })
 
 //Action Creators
-
-
 
 export const loadJudges = (judges) => {
     return{
@@ -340,24 +499,52 @@ export const loadJudges = (judges) => {
     }
 }
 
-export const changeJudge = (judge) => {
-   return{
-    type: "CHANGE_JUDGE",
-    judge: judge
-   }
-}
+// export const changeJudge = (judge) => {
+//    return{
+//     type: "CHANGE_JUDGE",
+//     judge: judge
+//    }
+// }
 
-export const userChangesYears = (userYears) => {
+export const changeYear = (year) => {
     return{
-    type: "USER_CHANGES_YEARS",
-    userYears: userYears
+     type: "CHANGE_YEAR",
+     year: year
+    }
+ }
+
+
+ export const changeCourt = (court) => {
+    return{
+        type: "CHANGE_COURT",
+        court: court
     }
 }
 
-export const courtsChange = (courts) => {
+export const fetchMapRequest = () => {
     return{
-        type: "COURTS_CHANGE",
-        courts: courts
+        type:"FETCH_MAP_REQUEST",
+    }
+}
+
+export const loadMap = (mapData) => {
+    return{
+        type:"LOAD_MAP",
+        mapData: mapData
+    }
+}
+
+export const fetchMapFailed = (errorMsg) => {
+    return{
+        type:"FETCH_MAP_FAILED",
+        error: errorMsg
+    }
+}
+
+export const loadUniColleges = (uniColleges) => {
+    return {
+        type: "LOAD_UNICOLLEGES",
+        uniColleges: uniColleges
     }
 }
 
@@ -365,21 +552,22 @@ export const courtsChange = (courts) => {
 
     
 
-// export function fetchJudges(url){
-//     return async function fethcJudgesThunk(dispatch){
+export function fetchMapData(url){
+    return async function fethcMapThunk(dispatch){
  
-//              dispatch(fetchJudgesRequest());
-//              console.log("sending request to db");
-//         try{ 
-//              const response = await fetch(url); 
- 
-//              const judgesContainer = await response.json();
-//              dispatch(loadJudges(judgesContainer.judges));
+             dispatch(fetchMapRequest());
+             console.log("sending request to db");
+        try{ 
+             const response = await fetch(url); 
+             const generalMapData = await response.json();
+             const countries = generalMapData.features;
+             const israelObj = countries.filter(country => country.properties.name === "Israel")
+
+             dispatch(loadMap(israelObj[0]));
      
-//          }catch(err){
-//              console.log(err.message, "error from here");
-//              dispatch(fetchJudgesFailed(err.message))
-//          };
+         }catch(err){
+             dispatch(fetchMapFailed(err.message))
+         };
  
-//      }
-//  }
+     }
+}

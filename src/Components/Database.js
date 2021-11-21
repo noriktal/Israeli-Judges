@@ -1,6 +1,6 @@
 import PageHeader from "./PageHeader";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
-import TabSystem from "./TabSystem";
+import TabSystem from "./Tabs/TabSystem";
 import { selectJudges } from "../RootReducer";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -93,9 +93,7 @@ const Database = () => {
               toolbarExportCSV: 'הורדה כ- CSV',
           }}
         />
-        <TabSystem  
-          // style={{flexDirection: "column"}}
-        />
+        <TabSystem />
       </div>
     </div>
   )

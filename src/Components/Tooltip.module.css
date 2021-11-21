@@ -1,0 +1,36 @@
+
+.tooltip{
+    width:fit-content;
+    max-width: 220px;
+    max-height: 200px;
+    background-color: var(--red);
+    color: white;
+    border: 1px solid var(--red);
+    border-radius: 5%;
+    position: absolute;
+}
+
+.h1,.h2{
+    font-family: Rubik;
+    padding: 5px;
+    text-align: center;
+    margin: 0;
+}
+
+.h1{
+    font-size: 16px;
+}
+
+.h2{
+    font-size: 14px;
+}
+
+
+.div{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+
+}

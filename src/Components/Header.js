@@ -15,7 +15,7 @@ const Header = () => {
                 <div className={styles.headerContentInner}>
 
                     <div className={styles.headerResearch}>
-                        <h2 className={styles.h2}> "שופטי ישראל בנתונים" מציג ממצאי מחקר על הפרופיל הסוציולוגי של שופטי ישראל בשנים 2016-1948:</h2>
+                        <h2 className={styles.h2}> "שופטי ישראל בנתונים" מציג ממצאי מחקר על הפרופיל הסוציולוגי של שופטי ישראל בשנים מאז 1948 ועד היום:</h2>
                         <button type="button" className={styles.button} id={styles.btnResearch}><a className={styles.a} href="#">לממצאי המחקר העיקריים</a></button>
                     </div>
 

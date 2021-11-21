@@ -14,6 +14,7 @@ const Navbar = () => {
     setMenuState("");
   }
 
+
   return (
     <div id={styles.navbar} className={menuState === "open" ? styles.spread : ""}>
         <span 
@@ -22,37 +23,43 @@ const Navbar = () => {
         >&#xf405;</span>
         <NavLink
           exact
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+                  : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/">בית
         </NavLink>
         <NavLink
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+                  : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/About"
         >אודות
         </NavLink>
         <NavLink
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+                  : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/Database"
         >מאגר מידע
         </NavLink>
         <NavLink
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+                  : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/QueryPage"
         >חקרו את המאגר
         </NavLink>
         <NavLink
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+                  : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/MainFindings"
         >ממצאים עיקריים
         </NavLink>
         <NavLink
-          activeClassName={styles.chosen}
-          className={`${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+          : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
+          to="/ChangesForm"
+        >עדכון פרטים
+        </NavLink>
+        <NavLink
+          className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
+          : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/English"
         >ENGLISH
         </NavLink>

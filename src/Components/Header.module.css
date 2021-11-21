@@ -1,5 +1,5 @@
 header{
-    background-image: url("../Images/Supreme\ Court\ header.jpg");
+    background-image: url("../Images/Supreme\ Court\ header-grey.jpg");
     background-repeat: no-repeat;
     background-position: center;
      background-size:cover;
@@ -40,7 +40,8 @@ header{
     align-items: center;
     padding: calc(1rem + 1vw);
     text-align: center;
-    background-color:rgba(236, 56, 46, 0.6);
+    background-color:rgba(255, 139, 45, 0.856);
+    /* background-color:rgba(236, 56, 46, 0.6); */
     background-clip: content-box;
     min-height: 280px;
 }

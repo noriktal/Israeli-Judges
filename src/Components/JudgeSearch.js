@@ -9,7 +9,7 @@ import { useState } from "react";
 const JudgeSearch = () => {
     
     const judges = useSelector(selectJudges);
-    const chosenJudge = useSelector(selectJudge);
+    //const chosenJudge = useSelector(selectJudge);
     const dispatch = useDispatch();
 
     const [selectedJudge, setSelectedJudge] = useState({surnameHE: "",givenNameHE:"" });
@@ -18,8 +18,8 @@ const JudgeSearch = () => {
     function handleJudgeSubmit(e) {
         e.preventDefault();
         setCardState("");
-        dispatch(changeJudge(selectedJudge));
-        setSelectedJudge({surnameHE: "", givenNameHE: ""});
+        //dispatch(changeJudge(selectedJudge));
+        //setSelectedJudge({surnameHE: "", givenNameHE: ""});
 
     }
 
@@ -53,10 +53,13 @@ const JudgeSearch = () => {
                     value="&#xf2f5;" />
             </form>
                                 {
-            chosenJudge.surnameHE &&
-            <JudgeCard
+            selectedJudge.surnameHE &&
+            <JudgeCard                    
+                chosenJudge={selectedJudge}
                 setCardState={setCardState}
-                cardState={cardState} />
+                cardState={cardState}
+                style={{top: "20%", left: "45%"}}
+                />
         }
     
     </div>

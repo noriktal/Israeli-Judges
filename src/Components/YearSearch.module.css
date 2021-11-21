@@ -1,0 +1,22 @@
+/* .searchWrapper{
+
+} */
+
+.yearSearchForm{
+    display: flex;
+    justify-content: start;
+}
+
+.submitBTN{
+    font-size: calc(1rem + 1vw);
+    border:none;
+    margin-right: 6px;
+    color: var(--red);
+    font-family: Ionicons;
+    background-color: rgba(0,0,0,0);
+    display:inline;
+}
+
+.submitBTN:hover{
+    cursor: pointer;
+}

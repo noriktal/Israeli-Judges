@@ -4,12 +4,14 @@
     position:absolute;
     background-color: var(--red);
     max-height: 300px;
+    max-width: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: 0 3px 10px rgb(34 25 25 / 40%);
-    top: 20%;
-    right: 10%;
-
+    /* margin-top: -30%;
+    margin-right: -15%; */
+    /* top: 20%;
+    right: 10%; */
    
 }
 
@@ -96,3 +98,25 @@ font-size: 16px;
     padding-left: 10px;
     font-size: 16px;
 }
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

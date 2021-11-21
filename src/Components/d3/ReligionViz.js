@@ -13,11 +13,13 @@ const ReligionViz = () => {
     const religionActiveCount = useSelector(selectReligionActiveJudges);
 
     useEffect(() => {
-        const svgPlaceReligionPie = d3.select(religionRef.current);
-    
-        drawPie(svgPlaceReligionPie, religionActiveCount);  
         
-      }, []);
+        if(religionActiveCount[1].count > 0){
+            const svgPlaceReligionPie = d3.select(religionRef.current);
+            drawPie(svgPlaceReligionPie, religionActiveCount);
+        }  
+        
+      }, [religionActiveCount]);
 
     return ( 
         <div className={styles.ReligionVizContainer}>

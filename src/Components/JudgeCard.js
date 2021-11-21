@@ -6,17 +6,19 @@ import avatar from "../Images/avatar.png"
 
 
 
-const JudgeCard = ({ setCardState, cardState }) => {
+const JudgeCard = ({ setCardState, cardState, style, chosenJudge }) => {
     
     
-    const chosenJudge = useSelector(selectJudge);
+    //const chosenJudge = useSelector(selectJudge);
 
     function handleCloseCard(){
         setCardState("close")
     }
     
     return (
-        <div className={`${styles.card} ${cardState === "close" ? styles.closed : ""}`} >
+        <div className={`${styles.card} ${cardState === "close" ? styles.closed : ""}`}
+             style={style}
+        >
             
                 <div className={styles.upperCard}>
                     <span 

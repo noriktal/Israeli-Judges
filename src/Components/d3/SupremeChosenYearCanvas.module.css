@@ -1,0 +1,60 @@
+.hidden{
+    display: none;
+}
+
+.canvas{
+    display:flex;
+    flex-direction: column;
+    width: 75vw;
+}
+
+.closeBtn{
+    font-family:  ionicons;
+    display:inline-block;
+    color:var(--red);
+    font-size: 26px;
+    width:100%;
+    text-align: right;
+    margin-right:8px; 
+    padding-top: 5px;
+    /* align-self: flex-end; */
+}
+
+.closeBtn:hover{
+    cursor: pointer;
+    color:var(--grey);
+}
+
+.judgeList{
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    margin: 12px auto;
+    flex-wrap: wrap;
+    align-content: center;
+    padding:0;
+}
+
+.judgebox{
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    margin: 20px 12px;
+}
+
+.avatar{
+    width: 100px;
+}
+
+.judgeTitle{
+    font-size: 17px;
+}
+
+.judgeTitle:hover{
+    color: var(--red);
+    cursor: pointer;
+}
+

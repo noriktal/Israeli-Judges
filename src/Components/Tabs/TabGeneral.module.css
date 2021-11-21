@@ -1,0 +1,13 @@
+.generalTab{
+    display: flex;
+    flex-direction: column;
+    align-Items: center;
+    justify-content: center;
+}
+
+.h1{
+    text-align: center;
+    font-size: 30px;
+    color: #463F3A;
+    margin-bottom: 8px;
+}

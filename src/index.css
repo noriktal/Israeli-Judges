@@ -4,9 +4,12 @@
 }
 
 :root {
-   --red: #EC382E;
+   --red: #FF9505;
+   /* --red: #EC382E; */
    --white: #FDFBFD;
    --grey: #7F7473;
+   --orange: #FF9505;
+   --blue: #4392F1;
 }
 
 html {
@@ -109,7 +112,6 @@ text-align: center !important;
 
 }
 
-
 .Mui-even{
    background-color: #D9D9D9;
 }
@@ -166,3 +168,67 @@ text-align: center !important;
    font-size: 17px;
    align-items: flex-start !important;
  }
+
+ /* Visualization Tabs - recurring parts */
+ /* --additional styles for unique elements in tabs are in module.css files-- */
+
+ .h1-tabs{
+   font-size: 30px;
+   color: #463F3A;
+   margin-bottom: 8px;
+ }
+
+ .h2-tabs{
+   font-size: 20px;
+   color: #463F3A;
+   padding-top:0;
+   margin-top:0;
+ }
+
+ .h3-tabs{
+    font-size: 15px;
+    color: #7F7473;
+    text-align: center;
+    line-height: 1.5;
+ }
+
+ .viz-container-tabs{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   max-width: 1050px;
+ }
+
+ .legend-container-tabs{
+   width:80vw;
+   display:flex;
+   justify-content: center;
+   margin-top: 18px;
+   margin-bottom: 18px;
+   flex-wrap: wrap;
+   align-content: center;
+ }
+
+ .graph-container-tabs{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   align-content: center;
+   margin-top: 25px;
+ }
+
+ .captionSpans-tabs:last-of-type{
+   position: relative;
+}
+
+.captionSpans-tabs:last-of-type::after{
+
+   content: "X";
+   position: absolute;
+   left: -6px;
+   background-color: white;
+   color: white;
+}
+
+ 

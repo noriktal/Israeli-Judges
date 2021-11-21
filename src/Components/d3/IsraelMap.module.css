@@ -1,0 +1,16 @@
+
+.circle:hover{
+    fill: #000;
+    cursor: pointer;
+}
+
+.caption{
+    font-family: Rubik;
+    font-size: 20px;
+    text-anchor: middle;
+}
+
+.caption:hover{
+    fill: var(--red);
+    cursor: pointer;
+}

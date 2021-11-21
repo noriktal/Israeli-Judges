@@ -1,0 +1,85 @@
+.h1{
+    font-size: 30px;
+    color: #463F3A;
+    margin-bottom: 8px;
+}
+
+.h2{
+    font-size: 20px;
+    color: #463F3A;
+    margin-top:10px;
+}
+
+.h3{
+    font-size: 15px;
+    color: #7F7473;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.captionSpans:last-of-type{
+    position: relative;
+}
+
+.captionSpans:last-of-type::after{
+
+content: "X";
+position: absolute;
+left: -6px;
+background-color: white;
+color: white;
+}
+
+.tabContainer{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+max-width: 1050px;
+}
+
+.multiPictoContainer, .hammerContainer, .judegessContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    
+}
+
+.legendPictoContainer{
+    width:80vw;
+    display:flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+
+@media only screen and (max-width:530px){ 
+    
+
+    .hammerContainer{
+        transform: scale(0.85);
+        margin-top: -250px;
+        margin-bottom: -270px;
+    }
+    
+}
+
+@media only screen and (max-width:460px){ 
+    
+    .hammerContainer{
+        transform: scale(0.75);
+    }
+    
+}
+
+@media only screen and (max-width:400px){ 
+    
+    .hammerContainer{
+        transform: scale(0.67);
+    }
+    
+}

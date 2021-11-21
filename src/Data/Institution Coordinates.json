@@ -1,0 +1,125 @@
+{
+   "uniColleges": [
+  {
+    "id": 595025,
+    "nameEN": "Bar Ilan University",
+    "nameHE": "אוניברסיטת בר אילן",
+    "abbreviationHE": "אוני' בר אילן",
+    "abbreviationEN": "Bar Ilan Uni.",
+    "typeEN": "University",
+    "typeHE": "אוניברסיטה",
+    "longitude": 34.8425,
+    "latitude": 32.067778
+  },
+  {
+    "id": 495069,
+    "nameEN": "College of Management",
+    "nameHE": "המכללה למנהל",
+    "abbreviationHE": "המכללה למנהל",
+    "abbreviationEN": "Coll. of Management",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.8495233285877,
+    "latitude": 32.1005558332932
+  },
+  {
+    "id": 195016,
+    "nameEN": "Hebrew University of Jerusalem",
+    "nameHE": "האוניברסיטה העברית בירושלים",
+    "abbreviationHE": "האוני' העברית",
+    "abbreviationEN": "Hebrew Uni.",
+    "typeEN": "University",
+    "typeHE": "אוניברסיטה",
+    "longitude": 35.2,
+    "latitude": 31.775833
+  },
+  {
+    "id": 595116,
+    "nameEN": "Reichman University",
+    "nameHE": "אוניברסיטת רייכמן",
+    "abbreviationHE": "אוני' רייכמן",
+    "abbreviationEN": "Reichman Uni.",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.835625,
+    "latitude": 32.176575
+  },
+  {
+    "id": 495028,
+    "nameEN": "Netanya Academic College",
+    "nameHE": "המכללה האקדמית נתניה",
+    "abbreviationHE": "מכללת נתניה",
+    "abbreviationEN": "Netanya Coll.",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.879811,
+    "latitude": 32.307228
+  },
+  {
+    "id": 595140,
+    "nameEN": "Ono Academic College",
+    "nameHE": "הקריה האקדמית אונו",
+    "abbreviationHE": "האקדמית אונו",
+    "abbreviationEN": "Ono Coll.",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.862056,
+    "latitude": 32.049197
+  },
+  {
+    "id": 0,
+    "nameEN": "Ramot Mishpat",
+    "nameHE": "רמות משפט",
+    "abbreviationHE": "רמות משפט",
+    "abbreviationEN": "Ramot Mishpat",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.804167,
+    "latitude": 32.113889
+  },
+  {
+    "id": 595017,
+    "nameEN": "Tel Aviv University",
+    "nameHE": "אוניברסיטת תל אביב",
+    "abbreviationHE": "אוני' תל אביב",
+    "abbreviationEN": "Tel Aviv Uni.",
+    "typeEN": "University",
+    "typeHE": "אוניברסיטה",
+    "longitude": 34.804167,
+    "latitude": 32.113889
+  },
+  {
+    "id": 495051,
+    "nameEN": "The Academic Center for Law and Science",
+    "nameHE": "המרכז האקדמי שערי מדע ומשפט",
+    "abbreviationHE": "שערי מדע ומשפט",
+    "abbreviationEN": "Tel Aviv Uni.",
+    "typeEN": "Center for Law and Science",
+    "typeHE": "מכללה",
+    "longitude": 34.9007,
+    "latitude": 32.155658
+  },
+  {
+    "id": 1,
+    "nameEN": "The College of Law and Business",
+    "nameHE": "המרכז האקדמי למשפט ולעסקים",
+    "abbreviationHE": "המרכז למשפט ולעסקים",
+    "abbreviationEN": "Coll. of Law and Business",
+    "typeEN": "College",
+    "typeHE": "מכללה",
+    "longitude": 34.821972,
+    "latitude": 32.092861
+  },
+  {
+    "id": 395020,
+    "nameEN": "University of Haifa",
+    "nameHE": "אוניברסיטת חיפה",
+    "abbreviationHE": "אוני' חיפה",
+    "abbreviationEN": "Uni. of Haifa",
+    "typeEN": "University",
+    "typeHE": "אוניברסיטה",
+    "longitude": 35.0195291319487,
+    "latitude": 32.7615919806426
+  }
+  ]
+}
