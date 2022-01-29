@@ -1,4 +1,4 @@
-const MainFindings = () => {
+const EnglishPage = () => {
     return (
         <div>
             
@@ -6,4 +6,4 @@ const MainFindings = () => {
       );
 }
  
-export default MainFindings;
+export default EnglishPage;

@@ -1,0 +1,18 @@
+.page{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .main{
+
+} */
+
+.intro{
+    width: 40vw;
+    margin: 30px auto;
+    font-size: 2.5rem;
+    color: var(--grey);
+    text-align: justify;
+}

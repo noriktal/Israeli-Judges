@@ -1,13 +1,13 @@
-import PageHeader from "./PageHeader";
+import PageHeader from "../PageHeader";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
-import TabSystem from "./Tabs/TabSystem";
-import { selectJudges } from "../RootReducer";
+import TabSystem from "../Tabs/TabSystem";
+import { selectJudges } from "../../RootReducer";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
 
 
-const Database = () => {
+const DatabasePage = () => {
 
   const judges = useSelector(selectJudges);
   const [selectionModel, setSelectionModel] = useState([]); //array of selected judges ids or row nums
@@ -54,7 +54,10 @@ const Database = () => {
 
   return (
     <div style={{overflowX:"hidden", width: "100vw"}}>
-      <PageHeader />
+      <PageHeader 
+        title1="מאגר מידע על שופטים בישראל"
+        title2="בעמוד זה ניתן לבחון את המאגר כולו או למצוא מידע על שופט\ת מסוימ\ת"
+      />
       <div style={{ height: 600, width: "100vw" }}>
       {/* {filterModel.items.length ? <span>{filterModel.items.length}</span> : <span></span>} */}
 
@@ -100,4 +103,4 @@ const Database = () => {
 }
 
 
-export default Database;
+export default DatabasePage;

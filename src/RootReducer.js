@@ -33,6 +33,131 @@ const initChosenYears = {
 
 const initStateJudges = [];
 
+const initStateSelectedJudge = {};
+
+const initStateJudgeFields = {allFields: ["id","status2017EN","status2017HE","surnameHE","givenNameHE",
+                                "surnameEN","givenNameEN","genderEN","genderHE","nationalityEN",
+                                "nationalityHE","religionEN","religionHE","religiousityEN","religiousityHE",
+                                "ethnicityEN","ethnicityHE","birthCountryEN","birthCountryHE","birthYear",
+                                "majorChildhoodCityHE","majorChildhoodCityEN","citySocio","highschoolHE","educationTypeEN",
+                                "educationTypeHE","mainLegalEducationEN","mainLegalEducationHE","mainLegalEducationTypeInstEN","mainLegalEducationTypeInstHE",
+                                "YearFisrtDegreeGraduation","typeAdvancedLegalEducationEN","typeAdvancedLegalEducationHE",
+                                "universityAdvancedLegalEducationEN","universityAdvancedLegalEducationHE","yearAdvancedLegalEducation",
+                                "otherAdvancedEducationHE","placeOfInternshipEN","placeOfInternshipHE","yearOfBecomingLawyer",
+                                "lastPositionBeforeJudgeshipEN","position1EN","position1HE","court1NameEN","court1NameHE",
+                                "position1Year","position2EN","position2HE","court2NameEN","court2NameHE","position2Year",
+                                "position3EN","position3HE","court3NameEN","court3NameHE","position3Year", "position4EN",
+                                "position4HE","court4NameEN","court4NameHE","position4Year","position5EN", "position5HE",
+                                "court5NameEN","court5NameHE", "position5Year", "position6EN", "position6HE","court6NameEN",
+                                "court6NameHE","position6Year", "position7EN", "position7HE", "court7NameEN","court7NameHE", "position7Year",
+                                "position8EN", "position8HE","court8NameEN", "court8NameHE","position8Year", "endOfCareerEN",
+                                "endOfCareerHE","everInSupremeCourt","everInSupremeStartYear1","everInSupremeEndYear1","everInSupremeStartYear2",
+                                "everInSupremeEndYear2", "everInDistrict","everInDistrictStartYear1","everInDistrictEndYear1", "everInDistrictStartYear2",
+                                "everInDistrictEndYear2","everInMagistrate","everInMagistrateStartYear1","everInMagistrateEndYear1","everInMagistrateStartYear2",
+                                "everInMagistrateEndYear2","everInLaborRegional","everInLaborRegionalStartYear1","everInLaborRegionalEndYear1","everInLaborRegionalStartYear2",
+                                "everInLaborRegionalEndYear2","everInLaborNational","everInLaborNationalStartYear","everInLaborNationalEndYear",
+                                "endOfCareerYear","comments","ageOfEnteringJudgeship","xpInFirstNom","ageOfRetirement","JudgeshipxpInRet"
+                                ],
+                                hebrewFields: ["id","status2017HE","surnameHE","givenNameHE","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
+                                "majorChildhoodCityHE","citySocio","highschoolHE","educationTypeHE","mainLegalEducationHE","mainLegalEducationTypeInstHE",
+                                "YearFisrtDegreeGraduation","typeAdvancedLegalEducationHE","universityAdvancedLegalEducationHE","yearAdvancedLegalEducation",
+                                "otherAdvancedEducationHE","placeOfInternshipHE","yearOfBecomingLawyer","position1HE","court1NameHE","position1Year","position2HE","court2NameHE","position2Year",
+                                "position3HE","court3NameHE","position3Year","position4HE","court4NameHE","position4Year", "position5HE","court5NameHE", "position5Year", "position6HE",
+                                "court6NameHE","position6Year", "position7HE","court7NameHE", "position7Year","position8HE", "court8NameHE","position8Year","endOfCareerHE","everInSupremeCourt","everInSupremeStartYear1","everInSupremeEndYear1","everInSupremeStartYear2",
+                                "everInSupremeEndYear2", "everInDistrict","everInDistrictStartYear1","everInDistrictEndYear1", "everInDistrictStartYear2","everInDistrictEndYear2","everInMagistrate","everInMagistrateStartYear1","everInMagistrateEndYear1","everInMagistrateStartYear2",
+                                "everInMagistrateEndYear2","everInLaborRegional","everInLaborRegionalStartYear1","everInLaborRegionalEndYear1","everInLaborRegionalStartYear2","everInLaborRegionalEndYear2","everInLaborNational","everInLaborNationalStartYear","everInLaborNationalEndYear",
+                                "endOfCareerYear","ageOfEnteringJudgeship","xpInFirstNom","ageOfRetirenment","JudgeshipxpInRet"
+                                ],
+                                hebrewLabels:["מספר זיהוי","פעיל כיום","שם משפחה","שם פרטי","מגדר",
+                                "לאום","דת","דתיות","אתניות-עדה","ארץ-איזור לידה","שנת לידה",
+                                "עיר ילדות","עשירון עיר ילדות","בית ספר תיכון","זרם חינוכי",
+                                "השכלה משפטית עיקרית","השכלה משפטית עיקרית- סוג מוסד",
+                                "שנת סיום תואר ראשון","סוג השכלה משפטית מתקדמת",
+                                "מוסד השכלה משפטית מתקדמת","שנת השכלה משפטית מתקדמת",
+                                "השכלה מתקדמת נוספת","מקום התמחות","שנת התחלה כעורך דין",
+                                "תפקיד ראשון","בימש תפקיד ראשון",
+                                "שנת תפקיד ראשון","תפקיד שני","בימש תפקיד שני","שנת תפקיד שני",
+                                "תפקיד שלישי","בימש תפקיד שלישי","שנת תפקיד שלישי",
+                                "תפקיד רביעי","בימש תפקיד רביעי","שנת תפקיד רביעי", "תפקיד חמישי",
+                                "בימש תפקיד חמישי", "שנת תפקיד חמישי", "תפקיד שישי",
+                                "בימש תפקיד שישי","שנת תפקיד שישי", "תפקיד שביעי","בימש תפקיד שביעי", "שנת תפקיד שביעי",
+                                 "תפקיד שמיני", "בימש תפקיד שמיני","שנת תפקיד שמיני",
+                                "סיום קריירה","מינוי בעליון","מינוי בעליון- שנת התחלה1","מינוי בעליון- שנת סיום1","מינוי בעליון- שנת התחלה2",
+                                "מינוי בעליון- שנת סיום2", "מינוי במחוזי","מינוי במחוזי- שנת התחלה1","מינוי במחוזי- שנת סיום 1", "מינוי במחוזי- שנת התחלה2","מינוי במחוזי- שנת סיום2",
+                                "מינוי בשלום","מינוי בשלום- שנת התחלה1","מינוי בשלום-שנת סיום1","מינוי בשלום- שנת התחלה2",
+                                "מינוי בשלום- שנת סיום2","מינוי בעבודה אזורי","מינוי בעבודה אזורי- שנת התחלה1","מינוי בעבודה איזורי- שנת סיום1","מינוי בעבודה אזורי- שנת התחלה2",
+                                "מינוי בעבודה אזורי- שנת סיום2","מינוי בעבודה ארצי","מינוי בעבודה ארצי- שנת התחלה1","מינוי בעבודה ארצי- שנת סיום1",
+                                "שנת סוף קריירה","גיל כניסה לשיפוט","ניסיון במינוי ראשון","גיל בפרישה","ניסיון בפרישה"],
+                                hebrewChangeableFields: ["status2017HE","surnameHE","givenNameHE","surnameEN","givenNameEN","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
+                                "majorChildhoodCityHE","citySocio","highschoolHE","educationTypeHE","mainLegalEducationHE","mainLegalEducationTypeInstHE",
+                                "YearFisrtDegreeGraduation","typeAdvancedLegalEducationHE","universityAdvancedLegalEducationHE","yearAdvancedLegalEducation",
+                                "otherAdvancedEducationHE","placeOfInternshipHE","yearOfBecomingLawyer","position1HE","court1NameHE","position1Year","position2HE","court2NameHE","position2Year",
+                                "position3HE","court3NameHE","position3Year","position4HE","court4NameHE","position4Year", "position5HE","court5NameHE", "position5Year", "position6HE",
+                                "court6NameHE","position6Year", "position7HE","court7NameHE", "position7Year","position8HE", "court8NameHE","position8Year","endOfCareerHE",
+                                "endOfCareerYear"
+                                ],
+                                hebrewChangeableLabels:["פעיל כיום","שם משפחה","שם פרטי","שם משפחה-אנגלית","שם פרטי- אנגלית","מגדר",
+                                "לאום","דת","דתיות","אתניות-עדה","ארץ-איזור לידה","שנת לידה",
+                                "עיר ילדות","עשירון עיר ילדות","בית ספר תיכון","זרם חינוכי",
+                                "השכלה משפטית עיקרית","השכלה משפטית עיקרית- סוג מוסד",
+                                "שנת סיום תואר ראשון","סוג השכלה משפטית מתקדמת",
+                                "מוסד השכלה משפטית מתקדמת","שנת השכלה משפטית מתקדמת",
+                                "השכלה מתקדמת נוספת","מקום התמחות","שנת התחלה כעורך דין",
+                                "תפקיד ראשון","בימש תפקיד ראשון",
+                                "שנת תפקיד ראשון","תפקיד שני","בימש תפקיד שני","שנת תפקיד שני",
+                                "תפקיד שלישי","בימש תפקיד שלישי","שנת תפקיד שלישי",
+                                "תפקיד רביעי","בימש תפקיד רביעי","שנת תפקיד רביעי", "תפקיד חמישי",
+                                "בימש תפקיד חמישי", "שנת תפקיד חמישי", "תפקיד שישי",
+                                "בימש תפקיד שישי","שנת תפקיד שישי", "תפקיד שביעי","בימש תפקיד שביעי", "שנת תפקיד שביעי",
+                                 "תפקיד שמיני", "בימש תפקיד שמיני","שנת תפקיד שמיני",
+                                "סיום קריירה",],
+                                englishFields: ["id","status2017EN",
+                                "surnameEN","givenNameEN","genderEN","nationalityEN",
+                                "religionEN","religiousityEN",
+                                "ethnicityEN","birthCountryEN","birthYear",
+                                "majorChildhoodCityEN","citySocio","educationTypeEN",
+                                "mainLegalEducationEN","mainLegalEducationTypeInstEN",
+                                "YearFisrtDegreeGraduation","typeAdvancedLegalEducationEN",
+                                "universityAdvancedLegalEducationEN","yearAdvancedLegalEducation",
+                                "placeOfInternshipEN","yearOfBecomingLawyer",
+                                "lastPositionBeforeJudgeshipEN","position1EN","court1NameEN",
+                                "position1Year","position2EN","court2NameEN","position2Year",
+                                "position3EN","court3NameEN","position3Year", "position4EN",
+                                "court4NameEN","position4Year","position5EN", 
+                                "court5NameEN", "position5Year", "position6EN", "court6NameEN",
+                                "position6Year", "position7EN",  "court7NameEN", "position7Year",
+                                "position8EN", "court8NameEN", "position8Year", "endOfCareerEN",
+                                "everInSupremeCourt","everInSupremeStartYear1","everInSupremeEndYear1","everInSupremeStartYear2",
+                                "everInSupremeEndYear2", "everInDistrict","everInDistrictStartYear1","everInDistrictEndYear1", "everInDistrictStartYear2",
+                                "everInDistrictEndYear2","everInMagistrate","everInMagistrateStartYear1","everInMagistrateEndYear1","everInMagistrateStartYear2",
+                                "everInMagistrateEndYear2","everInLaborRegional","everInLaborRegionalStartYear1","everInLaborRegionalEndYear1","everInLaborRegionalStartYear2",
+                                "everInLaborRegionalEndYear2","everInLaborNational","everInLaborNationalStartYear","everInLaborNationalEndYear",
+                                "endOfCareerYear","ageOfEnteringJudgeship","xpInFirstNom","ageOfRetirement","JudgeshipxpInRet"
+                                ],
+                                englishLabels:["ID","Currently Active",
+                                "Surname","Given Name","Gender","Nationality",
+                                "Religion","Religiousity",
+                                "Ethnicity","Birth Country","Birth Year",
+                                "Major Childhood City","City Socio","Education Type",
+                                "Main Legal Education","Main Legal Education-Type",
+                                "Year of Fisrt Degree Graduation","Advanced Legal Education Type",
+                                "University of Advanced Legal Education","Year of Advanced Legal Education",
+                                "Place of Internship","Year of Becoming Lawyer",
+                                "Last Position Before Judgeship","Position1","Court1 Name",
+                                "Position1 Year","Position2","Court2 Name","Position2 Year",
+                                "Position3","Court3 Name","Position3 Year", "Position4",
+                                "Court4 Name","Position4 Year","Position5", 
+                                "Court5 Name", "Position5 Year", "Position6", "Court6 Name",
+                                "Position6 Year", "Position7",  "Court7 Name", "Position7 Year",
+                                "Position8", "Court8 Name", "Position8 Year", "End of Career",
+                                "Ever in Supreme Court","Ever in Supreme Start Year1","Ever in Supreme End Year1","Ever in Supreme Start Year2",
+                                "Ever In Supreme End Year2", "Ever in District","Ever in District Start Year1","Ever in District End Year1", "everInDistrictStartYear2",
+                                "Ever in District End Year2","Ever in Magistrate","Ever in Magistrate Start Year1","Ever in Magistrate End Year1","Ever in Magistrate Start Year2",
+                                "Ever in Magistrate End Year2","Ever in Labor Regional","Ever in Labor Regional Start Year1","Ever in Labor Regional End Year1","Ever in Labor Regional Start Year2",
+                                "Ever in Labor Regional End Year2","Ever in Labor National","Ever in Labor National Start Year","Ever in Labor National End Year",
+                                "End Of Career Year","Age of Entering Judgeship","Experience in First Nomination","Age of Retirement","Judgeship Experience in Retirement"]
+                        }
+
 const initStateMap = {
     loading: false,
     mapData: {},
@@ -41,15 +166,15 @@ const initStateMap = {
 
 //Reducers
 
-// export function singleJudgeReducer(state = initStateChosenJudge, action){
-//     switch(action.type){
+export function singleJudgeReducer(state = initStateSelectedJudge, action){
+    switch(action.type){
 
-//         case "CHANGE_JUDGE":
-//             return action.judge;
-//         default:
-//             return state;
-//     }
-// }
+        case "CHANGE_JUDGE":
+            return action.judge;
+        default:
+            return state;
+    }
+}
 
 export function listReducer(state = initStateJudges, action){
     switch(action.type){
@@ -57,11 +182,16 @@ export function listReducer(state = initStateJudges, action){
         case "LOAD_JUDGES":
             
             return [...action.judges]
-                
-            
         
         default:
             return state;
+    }
+}
+
+export function fieldsReducer(state = initStateJudgeFields, action){
+    switch(action.type){
+        default:
+                return state;
     }
 }
 
@@ -152,8 +282,9 @@ export function chosenCourtReducer(state = initStateChosenCourt, action){
 //Combined Reducer
 
 export const rootReducer = combineReducers({
-    //singleJudge: singleJudgeReducer,
+    singleJudge: singleJudgeReducer,
     judges: listReducer,
+    fields: fieldsReducer,
     years: yearsReducer,
     courts: courtsReducer,
     chosenCourt: chosenCourtReducer,
@@ -165,7 +296,14 @@ export const rootReducer = combineReducers({
 //Selectors
 
 export const selectJudges = state => state.judges;
-//export const selectJudge = state => state.singleJudge;
+export const selectJudge = state => state.singleJudge;
+export const selectAllFields = state => state.fields.allFields;
+export const selectHebrewFields = state => state.fields.hebrewFields;
+export const selecthebrewChangeableFields = state => state.fields.hebrewChangeableFields;
+export const selecthebrewChangeableLabels = state => state.fields.hebrewChangeableLabels;
+export const selectEnglishFields = state => state.fields.englishFields;
+export const selectFieldLabelsHE = state => state.fields.hebrewLabels;
+export const selectFieldLabelsEN = state => state.fields.englishLabels;
 export const selectPreChosenYears = state => state.years.preChosenYears;
 export const selectUserChosenYear = state => state.years.userChosenYear;
 export const selectCourts = state => state.courts;
@@ -499,12 +637,12 @@ export const loadJudges = (judges) => {
     }
 }
 
-// export const changeJudge = (judge) => {
-//    return{
-//     type: "CHANGE_JUDGE",
-//     judge: judge
-//    }
-// }
+export const changeJudge = (judge) => {
+   return{
+    type: "CHANGE_JUDGE",
+    judge: judge
+   }
+}
 
 export const changeYear = (year) => {
     return{

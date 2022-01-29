@@ -5,21 +5,22 @@ import JudgeCard from "./JudgeCard";
 import { useSelector, useDispatch } from "react-redux";
 import { selectJudges, selectJudge, changeJudge } from "../RootReducer";
 import { useState } from "react";
+import ChangesForm from "./ChangesForm";
 
-const JudgeSearch = () => {
+const JudgeSearch = ({format, btnColor}) => {
     
     const judges = useSelector(selectJudges);
-    //const chosenJudge = useSelector(selectJudge);
+    const chosenJudge = useSelector(selectJudge);
     const dispatch = useDispatch();
 
-    const [selectedJudge, setSelectedJudge] = useState({surnameHE: "",givenNameHE:"" });
+    const [selectedJudge, setSelectedJudge] = useState(null);
     const [cardState, setCardState] = useState("close");
 
     function handleJudgeSubmit(e) {
-        e.preventDefault();
+        e.preventDefault(); 
         setCardState("");
-        //dispatch(changeJudge(selectedJudge));
-        //setSelectedJudge({surnameHE: "", givenNameHE: ""});
+        dispatch(changeJudge(selectedJudge));
+        setSelectedJudge(null);
 
     }
 
@@ -36,7 +37,14 @@ const JudgeSearch = () => {
                     options={judges}
                     // autoSelect={true}
                     loadingText="התוצאות בדרך..."
-                    getOptionLabel={(option) => `${option.surnameHE} ${option.givenNameHE}`}
+                    getOptionLabel={(option) => {
+                        if(typeof option === null){
+                            return "";
+                        }else{
+                           return `${option.surnameHE} ${option.givenNameHE}`;
+                        }
+                        }
+                    }
                     onChange={(e, newvalue) => setSelectedJudge(newvalue)}
                     value={selectedJudge}
                     renderInput={(params) => <TextField
@@ -50,17 +58,23 @@ const JudgeSearch = () => {
                 <input
                     type="submit"
                     className={styles.search}
+                    style={{color: btnColor}}
                     value="&#xf2f5;" />
             </form>
-                                {
-            selectedJudge.surnameHE &&
-            <JudgeCard                    
-                chosenJudge={selectedJudge}
-                setCardState={setCardState}
-                cardState={cardState}
-                style={{top: "20%", left: "45%"}}
-                />
-        }
+            {
+                (chosenJudge.surnameHE && (format === "card")) && 
+                <JudgeCard                    
+                    setCardState={setCardState}
+                    cardState={cardState}
+                    style={{top: "20%", left: "45%"}}
+                    />
+            }
+            {/* {chosenJudge.surnameHE && (format === "form") &&
+            <ChangesForm 
+                chosenJudge={chosenJudge}
+            />
+        } */}
+
     
     </div>
       );

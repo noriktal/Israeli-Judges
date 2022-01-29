@@ -1,5 +1,5 @@
 import styles from "./NotFound.module.css";
-import home from "../Images/home.png";
+import home from "../../Images/home.png";
 import { NavLink } from "react-router-dom";
 
 const NotFound = () => {

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import PageHeader from "./PageHeader";
+import PageHeader from "../PageHeader";
 import { DataGrid } from "@material-ui/data-grid";
-import { selectJudges } from "../RootReducer";
+import { selectJudges } from "../../RootReducer";
 
 
 const QueryPage = () => {

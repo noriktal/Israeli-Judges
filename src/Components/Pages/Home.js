@@ -1,5 +1,5 @@
-import Header from "./Header";
-import ProjectDescription from "./ProjectDescription";
+import Header from "../Header";
+import ProjectDescription from "../ProjectDescription";
 import {  useDispatch } from "react-redux";
 
 

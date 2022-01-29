@@ -1,0 +1,15 @@
+.formContainer{
+    width: 80vw;
+    margin: 20px auto;
+}
+
+.form{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.field{
+    margin: 8px;
+}

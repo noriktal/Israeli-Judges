@@ -11,7 +11,7 @@
     font-size: calc(1rem + 1vw);
     border:none;
     margin-right: 6px;
-    color: var(--red);
+    color: var(--primary);
     font-family: Ionicons;
     background-color: rgba(0,0,0,0);
     display:inline;

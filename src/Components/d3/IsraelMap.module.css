@@ -11,6 +11,6 @@
 }
 
 .caption:hover{
-    fill: var(--red);
+    fill: var(--primary);
     cursor: pointer;
 }

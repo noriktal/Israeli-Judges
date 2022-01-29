@@ -1,15 +1,14 @@
 import JudgeSearch from "./JudgeSearch"
 import styles from "./PageHeader.module.css"
 
-function PageHeader() {
+function PageHeader({ title1, title2} ) {
 
 
     return(
         <div className={styles.headerWrapper}>
             <div className={styles.innerWrapper}>
-            <h1 className={styles.pageTitle}>מאגר מידע על שופטים בישראל</h1>
-            <h2 className={styles.secondaryTitle}>בעמוד זה ניתן לבחון את המאגר כולו או למצוא מידע על שופט\ת מסוימ\ת</h2>
-            {/* <JudgeSearch /> */}
+                <h1 className={styles.pageTitle}>{title1}</h1>
+                <h2 className={styles.secondaryTitle}>{title2}</h2>
             </div>
         </div>
     )

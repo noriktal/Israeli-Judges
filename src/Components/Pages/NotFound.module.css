@@ -1,5 +1,5 @@
 .notFoundDiv{
-    background-image: url("../Images/navigation.jpg");
+    background-image: url("../../Images/navigation.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size:cover;
@@ -24,7 +24,7 @@
 }
 
 .h1, .h2 {
-    color: var(--red);
+    color: var(--primary);
     margin: 0;
     text-align: center;
 }

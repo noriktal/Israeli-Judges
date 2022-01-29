@@ -22,42 +22,48 @@ const Navbar = () => {
         onClick = {handleCloseMenu}
         >&#xf405;</span>
         <NavLink
-          exact
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
                   : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/">בית
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
                   : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/About"
         >אודות
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
                   : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/Database"
         >מאגר מידע
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
                   : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/QueryPage"
         >חקרו את המאגר
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
                   : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/MainFindings"
         >ממצאים עיקריים
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
           : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
-          to="/ChangesForm"
+          to="/Changes"
         >עדכון פרטים
         </NavLink>
         <NavLink
+          end
           className={navData => navData.isActive ? `${styles.link} ${styles.chosen} ${menuState === "open" ? styles.show : ""}`
           : `${styles.link} ${menuState === "open" ? styles.show : ""}`}
           to="/English"

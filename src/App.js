@@ -8,16 +8,16 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { heIL } from '@material-ui/core/locale';
 // import { arSD } from '@material-ui/data-grid';
 
-import Home from "./Components/Home";
+import Home from "./Components/Pages/Home";
 import Navbar from "./Components/Navbar";
-import About from "./Components/About";
-import Database from "./Components/Database";
-import MainFindings from "./Components/MainFindings";
-import QueryPage from "./Components/QueryPage";
-import English from "./Components/English";
-import ChangesForm from './Components/ChangesForm';
+import AboutPage from "./Components/Pages/AboutPage";
+import DatabasePage from "./Components/Pages/DatabasePage";
+import MainFindingsPage from "./Components/Pages/MainFindingsPage";
+import QueryPage from "./Components/Pages/QueryPage";
+import EnglishPage from "./Components/Pages/EnglishPage";
+import ChangesPage from './Components/Pages/ChangesPage';
 
-import NotFound from "./Components/NotFound";
+import NotFound from "./Components/Pages/NotFound";
 import { useGeoData } from "./Components/useGeoData";
 
 
@@ -25,7 +25,7 @@ import { useGeoData } from "./Components/useGeoData";
 const theme = createTheme({
   palette:{
     primary: {
-      main: "#FF9505"
+      main: "#4392F1"
     },
     secondary: {
       main: "#7F7473"
@@ -57,12 +57,12 @@ function App() {
           <Navbar />
           <Routes>
             
-            <Route path="/About" element={<About />}/>
-            <Route path="/Database" element={<Database />}/>
-            <Route path="/MainFindings" element={<MainFindings />}/>
+            <Route path="/About" element={<AboutPage />}/>
+            <Route path="/Database" element={<DatabasePage />}/>
+            <Route path="/MainFindings" element={<MainFindingsPage />}/>
             <Route path="/QueryPage" element={<QueryPage />}/>
-            <Route path="ChangesForm" element={<ChangesForm />}/>
-            <Route path="/English" element= {<English />} />
+            <Route path="/Changes" element={<ChangesPage />}/>
+            <Route path="/English" element= {<EnglishPage />} />
             <Route path="/" element={<Home />}/>
             <Route path="*" element={<NotFound />}/>
            

@@ -1,18 +1,22 @@
 
-import { useSelector } from "react-redux";
-import { selectJudge } from "../RootReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { selectJudge, changeJudge } from "../RootReducer";
 import styles from "./JudgeCard.module.css"
 import avatar from "../Images/avatar.png"
 
 
 
-const JudgeCard = ({ setCardState, cardState, style, chosenJudge }) => {
+const JudgeCard = ({ setCardState, cardState, style }) => {
     
     
-    //const chosenJudge = useSelector(selectJudge);
+    const chosenJudge = useSelector(selectJudge);
+    const dispatch = useDispatch();
+
 
     function handleCloseCard(){
-        setCardState("close")
+        setCardState("close");
+        dispatch(changeJudge({}));
+
     }
     
     return (

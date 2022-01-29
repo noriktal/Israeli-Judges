@@ -3,9 +3,9 @@
     width:fit-content;
     max-width: 220px;
     max-height: 200px;
-    background-color: var(--red);
+    background-color: var(--primary);
     color: white;
-    border: 1px solid var(--red);
+    border: 1px solid var(--primary);
     border-radius: 5%;
     position: absolute;
 }
