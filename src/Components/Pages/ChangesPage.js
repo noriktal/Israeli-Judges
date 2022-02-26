@@ -2,11 +2,15 @@ import PageHeader from "../PageHeader";
 import ChangesForm from "../ChangesForm";
 import styles from "./ChangesPage.module.css";
 import JudgeSearch from "../JudgeSearch";
+import { useState } from "react";
 
 
 
 
 function ChangesPage(){
+
+    const [selectedJudgeParent, setSelectedJudgeParent] = useState(null);
+
 
     return(
         
@@ -23,8 +27,9 @@ function ChangesPage(){
                     <JudgeSearch 
                     format="form"
                     btnColor="var(--blue)"
+                    setSelectedJudgeParent={setSelectedJudgeParent}
                     />
-                    <ChangesForm />
+                    <ChangesForm chosenJudge={selectedJudgeParent}/>
                 </main>
                 
             </div>

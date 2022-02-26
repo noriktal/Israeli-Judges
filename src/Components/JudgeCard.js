@@ -6,16 +6,17 @@ import avatar from "../Images/avatar.png"
 
 
 
-const JudgeCard = ({ setCardState, cardState, style }) => {
+const JudgeCard = ({ setCardState, cardState, style, chosenJudge, setSelectedJudge }) => {
     
     
-    const chosenJudge = useSelector(selectJudge);
+    //const chosenJudge = useSelector(selectJudge);
     const dispatch = useDispatch();
 
 
     function handleCloseCard(){
         setCardState("close");
-        dispatch(changeJudge({}));
+        setSelectedJudge(null)
+        //dispatch(changeJudge({}));
 
     }
     
@@ -72,49 +73,51 @@ const JudgeCard = ({ setCardState, cardState, style }) => {
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד ראשון:</span> <span className={styles.propertyLabel}>{chosenJudge.position1Year}</span></h2>
                 </div>
                 
-                {chosenJudge.position2EN && <div>
+                {chosenJudge.position2HE && 
+                
+                <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד שני:</span> <span className={styles.propertyLabel}>{chosenJudge.position2HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד שני:</span> <span className={styles.propertyLabel}>{chosenJudge.court2NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד שני:</span> <span className={styles.propertyLabel}>{chosenJudge.position1Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position3EN && <div>
+                {chosenJudge.position3HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד שלישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position3HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד שלישי:</span> <span className={styles.propertyLabel}>{chosenJudge.court3NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד שלישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position3Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position4EN && <div>
+                {chosenJudge.position4HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד רביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.position4HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד רביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.court4NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד רביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.position4Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position5EN && <div>
+                {chosenJudge.position5HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד חמישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position5HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד חמישי:</span> <span className={styles.propertyLabel}>{chosenJudge.court5NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד חמישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position5Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position6EN && <div>
+                {chosenJudge.position6HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד שישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position6HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד שישי:</span> <span className={styles.propertyLabel}>{chosenJudge.court6NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד שישי:</span> <span className={styles.propertyLabel}>{chosenJudge.position6Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position7EN && <div>
+                {chosenJudge.position7HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד שביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.position7HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד שביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.court7NameHE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>שנה תפקיד שביעי:</span> <span className={styles.propertyLabel}>{chosenJudge.position7Year}</span></h2>
                 </div>
                 }
-                {chosenJudge.position8EN && <div>
+                {chosenJudge.position8HE && <div>
                     
                     <h2 className={styles.h2}><span className={styles.keyLabel}>תפקיד שמיני:</span> <span className={styles.propertyLabel}>{chosenJudge.position8HE}</span></h2>
                     <h2 className={styles.h2}><span className={styles.keyLabel}>בימ"ש תפקיד שמיני:</span> <span className={styles.propertyLabel}>{chosenJudge.court8NameHE}</span></h2>

@@ -35,7 +35,7 @@ const initStateJudges = [];
 
 const initStateSelectedJudge = {};
 
-const initStateJudgeFields = {allFields: ["id","status2017EN","status2017HE","surnameHE","givenNameHE",
+const initStateJudgeFields = {allFields: ["id","status2021EN","status2021HE","surnameHE","givenNameHE",
                                 "surnameEN","givenNameEN","genderEN","genderHE","nationalityEN",
                                 "nationalityHE","religionEN","religionHE","religiousityEN","religiousityHE",
                                 "ethnicityEN","ethnicityHE","birthCountryEN","birthCountryHE","birthYear",
@@ -58,7 +58,7 @@ const initStateJudgeFields = {allFields: ["id","status2017EN","status2017HE","su
                                 "everInLaborRegionalEndYear2","everInLaborNational","everInLaborNationalStartYear","everInLaborNationalEndYear",
                                 "endOfCareerYear","comments","ageOfEnteringJudgeship","xpInFirstNom","ageOfRetirement","JudgeshipxpInRet"
                                 ],
-                                hebrewFields: ["id","status2017HE","surnameHE","givenNameHE","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
+                                hebrewFields: ["id","status2021HE","surnameHE","givenNameHE","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
                                 "majorChildhoodCityHE","citySocio","highschoolHE","educationTypeHE","mainLegalEducationHE","mainLegalEducationTypeInstHE",
                                 "YearFisrtDegreeGraduation","typeAdvancedLegalEducationHE","universityAdvancedLegalEducationHE","yearAdvancedLegalEducation",
                                 "otherAdvancedEducationHE","placeOfInternshipHE","yearOfBecomingLawyer","position1HE","court1NameHE","position1Year","position2HE","court2NameHE","position2Year",
@@ -88,7 +88,7 @@ const initStateJudgeFields = {allFields: ["id","status2017EN","status2017HE","su
                                 "מינוי בשלום- שנת סיום2","מינוי בעבודה אזורי","מינוי בעבודה אזורי- שנת התחלה1","מינוי בעבודה איזורי- שנת סיום1","מינוי בעבודה אזורי- שנת התחלה2",
                                 "מינוי בעבודה אזורי- שנת סיום2","מינוי בעבודה ארצי","מינוי בעבודה ארצי- שנת התחלה1","מינוי בעבודה ארצי- שנת סיום1",
                                 "שנת סוף קריירה","גיל כניסה לשיפוט","ניסיון במינוי ראשון","גיל בפרישה","ניסיון בפרישה"],
-                                hebrewChangeableFields: ["status2017HE","surnameHE","givenNameHE","surnameEN","givenNameEN","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
+                                hebrewChangeableFields: ["status2021HE","surnameHE","givenNameHE","surnameEN","givenNameEN","genderHE","nationalityHE","religionHE","religiousityHE","ethnicityHE","birthCountryHE","birthYear",
                                 "majorChildhoodCityHE","citySocio","highschoolHE","educationTypeHE","mainLegalEducationHE","mainLegalEducationTypeInstHE",
                                 "YearFisrtDegreeGraduation","typeAdvancedLegalEducationHE","universityAdvancedLegalEducationHE","yearAdvancedLegalEducation",
                                 "otherAdvancedEducationHE","placeOfInternshipHE","yearOfBecomingLawyer","position1HE","court1NameHE","position1Year","position2HE","court2NameHE","position2Year",
@@ -111,7 +111,7 @@ const initStateJudgeFields = {allFields: ["id","status2017EN","status2017HE","su
                                 "בימש תפקיד שישי","שנת תפקיד שישי", "תפקיד שביעי","בימש תפקיד שביעי", "שנת תפקיד שביעי",
                                  "תפקיד שמיני", "בימש תפקיד שמיני","שנת תפקיד שמיני",
                                 "סיום קריירה",],
-                                englishFields: ["id","status2017EN",
+                                englishFields: ["id","status2021EN",
                                 "surnameEN","givenNameEN","genderEN","nationalityEN",
                                 "religionEN","religiousityEN",
                                 "ethnicityEN","birthCountryEN","birthYear",
@@ -595,7 +595,7 @@ export const selectReligionActiveJudges = createSelector(
            
             //only active judges today
         
-            const filteredJudges = judges.filter(judge => judge.status2017EN === "Active");
+            const filteredJudges = judges.filter(judge => judge.status2021EN === "Active");
             const total = filteredJudges.length;
 
             //count judges by religion

@@ -51,7 +51,8 @@ const SupremeChosenYearCanvas = ({setCanvasState, canvasState}) => {
                         {selectedJudge.id === judge.id &&
                         <JudgeCard 
                             chosenJudge={selectedJudge}
-                            setCardState={setCardState} 
+                            setCardState={setCardState}
+                            setSelectedJudge={setSelectedJudge} 
                             cardState={cardState}
                             style={{marginLeft: "-150%", marginRight: "-20%"}}
                             />

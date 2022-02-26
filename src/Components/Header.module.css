@@ -172,7 +172,7 @@ header{
 @media only screen and (max-width:850px){
 
     header{
-        background-image: url("../Images/Supreme-Court-small.jpg");
+        background-image: url("../Images/Supreme\ Court\ header-grey-small.jpg");
     }
 }
 

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect } from "react";
 import {  useDispatch } from "react-redux";
 import { loadJudges, loadUniColleges } from "./RootReducer";
-import data from "./Data/judgesData.json";
+import data from "./Data/judgesData_new.json";
 import data2 from "./Data/Institution Coordinates.json";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { heIL } from '@material-ui/core/locale';

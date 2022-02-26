@@ -7,10 +7,10 @@ import { selectJudges, selectJudge, changeJudge } from "../RootReducer";
 import { useState } from "react";
 import ChangesForm from "./ChangesForm";
 
-const JudgeSearch = ({format, btnColor}) => {
+const JudgeSearch = ({format, btnColor, setSelectedJudgeParent}) => {
     
     const judges = useSelector(selectJudges);
-    const chosenJudge = useSelector(selectJudge);
+    //const chosenJudge = useSelector(selectJudge);
     const dispatch = useDispatch();
 
     const [selectedJudge, setSelectedJudge] = useState(null);
@@ -19,8 +19,11 @@ const JudgeSearch = ({format, btnColor}) => {
     function handleJudgeSubmit(e) {
         e.preventDefault(); 
         setCardState("");
-        dispatch(changeJudge(selectedJudge));
-        setSelectedJudge(null);
+        if(setSelectedJudgeParent){
+            setSelectedJudgeParent(selectedJudge)
+        }
+        // dispatch(changeJudge(selectedJudge));
+        // setSelectedJudge(null);
 
     }
 
@@ -62,9 +65,11 @@ const JudgeSearch = ({format, btnColor}) => {
                     value="&#xf2f5;" />
             </form>
             {
-                (chosenJudge.surnameHE && (format === "card")) && 
+                (selectedJudge?.surnameHE && (format === "card")) && 
                 <JudgeCard                    
                     setCardState={setCardState}
+                    chosenJudge={selectedJudge}
+                    setSelectedJudge={setSelectedJudge}
                     cardState={cardState}
                     style={{top: "20%", left: "45%"}}
                     />

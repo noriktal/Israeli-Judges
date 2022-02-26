@@ -6,9 +6,9 @@ import TextField from '@material-ui/core/TextField';
 
 
 
-function ChangesForm(){
+function ChangesForm({chosenJudge}){
 
-    const chosenJudge = useSelector(selectJudge);
+    //const chosenJudge = useSelector(selectJudge);
     const hebrewChangeableFields = useSelector(selecthebrewChangeableFields);
     const hebrewChangeableLabels = useSelector(selecthebrewChangeableLabels);
     const [changes, setChanges] = useState({});
@@ -36,11 +36,11 @@ function ChangesForm(){
                             name={field}
                             key={field}
                             className={`muiFieldChanges`} 
-                            label={hebrewChangeableLabels[i]}
-                            placeholder={chosenJudge ? chosenJudge[field] : ""}
+                            placeholder={hebrewChangeableLabels[i]}
+                            label={chosenJudge ? chosenJudge[field]?.toString() : ""}
                             value={changes[field] || ""}
                             onChange={handleInput} 
-                            variant="outlined" 
+                            variant="standard" 
                             />
                     )
                 }
