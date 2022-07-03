@@ -3,6 +3,7 @@ import ChangesForm from "../ChangesForm";
 import styles from "./ChangesPage.module.css";
 import JudgeSearch from "../JudgeSearch";
 import { useState } from "react";
+import TempForm from "../TempForm";
 
 
 
@@ -30,6 +31,7 @@ function ChangesPage(){
                     setSelectedJudgeParent={setSelectedJudgeParent}
                     />
                     <ChangesForm chosenJudge={selectedJudgeParent}/>
+                    <TempForm />
                 </main>
                 
             </div>

@@ -13,9 +13,9 @@ function ChangesForm({chosenJudge}){
     const hebrewChangeableLabels = useSelector(selecthebrewChangeableLabels);
     const [changes, setChanges] = useState({});
     
-    hebrewChangeableFields.forEach((field,index)=> {
-        console.log(field, hebrewChangeableLabels[index])
-    });
+    // hebrewChangeableFields.forEach((field,index)=> {
+    //     console.log(field, hebrewChangeableLabels[index])
+    // });
     function handleInput(e){
         let value = e.target.value;
         let name = e.target.name;

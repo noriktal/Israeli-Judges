@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import { combineReducers } from "redux";
+import clipRectangle from "d3-geo/src/clip/rectangle";
 
 //Initial States
  
@@ -497,7 +498,7 @@ export const selectGenderDataPerCourtPreChosenYears = createSelector(
             const filteredJudgesLaborRegional = judges.filter(judge => ((judge.everInLaborRegionalStartYear1 <= year) && (judge.everInLaborRegionalEndYear1 >= year)) || ((judge.everInLaborRegionalStartYear2 <= year) && (judge.everInLaborRegionalEndYear2 >= year)) );
             const filteredJudgesLaborNational = judges.filter(judge => (judge.everInLaborNationalStartYear <= year) && (judge.everInLaborNationalEndYear >= year) );
             
-            //total no. of judges in each type of cout for each year
+            //total no. of judges in each type of court for each year
 
             yearObject.countsPerCourt[0].totalJudges = filteredJudgesMagistrate.length;
             yearObject.countsPerCourt[1].totalJudges = filteredJudgesDistrict.length;
@@ -628,6 +629,32 @@ export const selectSupremeJudgesPerChosenYear = createSelector(
      return judges.filter(judge => ((judge.everInSupremeStartYear1 <= chosenYear) && (judge.everInSupremeEndYear1 >= chosenYear)) || ((judge.everInSupremeStartYear2 <= chosenYear) && (judge.everInSupremeEndYear2 >= chosenYear)) );
     })
 
+    //For another research
+export const selectSupremeJudges = createSelector(
+    [selectJudges],
+    (judges) => {
+        let judgesPerYear = [];
+        for (let year = 1948; year < 2022; year++) {
+            let filteredJudges = judges.filter(judge => ((judge.everInSupremeStartYear1 <= year) && (judge.everInSupremeEndYear1 >= year)) || ((judge.everInSupremeStartYear2 <= year) && (judge.everInSupremeEndYear2 >= year)));
+            let yearObj = {
+                year: year,
+                how_many: filteredJudges.length,
+                judges : filteredJudges.map(judge => ({
+                    given_name: judge.givenNameEN,
+                    surname:judge.surnameEN,
+                    id: judge.id,
+                    experience: judge.everInSupremeStartYear2 ? ((year - judge.everInSupremeStartYear2) + (judge.everInSupremeEndYear1 - judge.everInSupremeStartYear1)): (year - judge.everInSupremeStartYear1)
+                })),
+            };
+            yearObj.judges.sort((a,b) => b.experience - a.experience);
+            judgesPerYear.push(yearObj)
+        };
+    
+       return judgesPerYear;
+       
+        //return judges.filter(judge => ((judge.everInSupremeStartYear1 <= chosenYear) && (judge.everInSupremeEndYear1 >= chosenYear)) || ((judge.everInSupremeStartYear2 <= chosenYear) && (judge.everInSupremeEndYear2 >= chosenYear)) );
+    })
+
 //Action Creators
 
 export const loadJudges = (judges) => {
@@ -709,3 +736,27 @@ export function fetchMapData(url){
  
      }
 }
+
+
+export function postJudgesResult(data){
+    return async function fethcMapThunk(dispatch){
+ 
+            
+             console.log("sending request to db");
+        try{ 
+             const response = await fetch("https://sheet.best/api/sheets/e50f047a-829c-42f5-8615-1005622247a4", {
+                 method: "POST",
+                 body: data,
+             }) 
+             const usableResponse = await response.json();
+             console.log("response from postJudgesResult",usableResponse)
+
+            
+     
+         }catch(err){
+            console.log(err.message)
+         };
+ 
+     }
+}
+
